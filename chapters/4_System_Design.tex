@@ -1,0 +1,196 @@
+\section{System Architecture}
+\label{sec:design_arch}
+
+OpsMind AI is engineered following a decoupled, four-tier client-server architecture designed for modularity, low-latency execution, and operational reliability. The four distinct architectural layers comprise:
+
+\begin{enumerate}
+    \item \textbf{Presentation Layer (Frontend UI):} Built with React.js, Vite, and Tailwind CSS. It provides the user-facing Single Page Application (SPA), managing conversational interactions, file upload progress meters, document analytics dashboards, dark/light theme persistence, and interactive PDF source citation modals.
+    \item \textbf{Application and Orchestration Layer (Backend Server):} Implemented using Node.js and Express.js. This layer handles HTTP routing, multi-part form data ingestion, PDF text parsing via \texttt{pdfjs-dist}, sliding-window text segmentation, in-process embedding coordination, and context prompt assembly.
+    \item \textbf{Inference and Neural Embedding Layer:} Executes the local Transformer feature extraction pipeline (\texttt{all-MiniLM-L6-v2} via \texttt{@xenova/transformers}) to generate 384-dimensional dense vectors, and communicates asynchronously with Google's cloud-hosted Gemini 2.5 Flash API for context-grounded response generation.
+    \item \textbf{Persistence and Vector Indexing Layer:} Backed by MongoDB Atlas. It stores chunk metadata, structural headers, character offsets, and high-dimensional vector embeddings, while executing native vector search aggregations via dedicated approximate nearest neighbor indices.
+\end{enumerate}
+
+Figure \ref{fig:arch_diagram} illustrates the comprehensive architectural topology and inter-component communication channels of OpsMind AI.
+
+\begin{figure}[H]
+\centering
+\resizebox{0.95\textwidth}{!}{
+\begin{tikzpicture}[
+    comp/.style={rectangle, draw=blue!80!purple, fill=blue!12, text centered, rounded corners=4pt, minimum height=1.1cm, minimum width=4.0cm, text width=3.8cm, font=\small},
+    layer_box/.style={rectangle, draw=blue!70, fill=blue!4, thick, rounded corners=6pt, inner sep=12pt},
+    layer_title/.style={font=\bfseries\large, text=black, anchor=west},
+    line/.style={draw=blue!80!black, ->, ultra thick, >=stealth}
+]
+
+    % Row 1: Presentation Layer Components
+    \node [comp] (chat_ui) at (-4.5, 6.4) {Chat Assistant UI};
+    \node [comp] (upload_ui) at (0, 6.4) {SOP Ingestion UI};
+    \node [comp] (admin_ui) at (4.5, 6.4) {Admin Dashboard};
+    
+    % Row 1 Title & Background Box
+    \node [layer_title] (pres_title) at (-6.6, 7.4) {Presentation Layer (React.js + Vite + Tailwind CSS)};
+    \begin{scope}[on background layer]
+        \node [layer_box, fit=(pres_title) (chat_ui) (admin_ui)] (pres_layer) {};
+    \end{scope}
+
+    % Row 2: Orchestration Layer Components
+    \node [comp] (router) at (-4.5, 2.0) {API Routing \& Multer};
+    \node [comp] (parser) at (0, 2.0) {PDF Text Extractor};
+    \node [comp] (chunker) at (4.5, 2.0) {Sliding-Window Chunker};
+    
+    % Row 2 Title & Background Box
+    \node [layer_title] (app_title) at (-6.6, 3.0) {Orchestration Layer (Node.js + Express.js)};
+    \begin{scope}[on background layer]
+        \node [layer_box, fit=(app_title) (router) (chunker)] (app_layer) {};
+    \end{scope}
+
+    % Row 3: Inference & Persistence Layer Components
+    \node [comp] (embed) at (-4.5, -2.4) {all-MiniLM-L6-v2 (384-d)};
+    \node [comp] (mongo) at (0, -2.4) {MongoDB Vector Search};
+    \node [comp] (gemini) at (4.5, -2.4) {Google Gemini 2.5 Flash};
+    
+    % Row 3 Title & Background Box
+    \node [layer_title] (infer_title) at (-6.6, -1.4) {AI Inference \& Persistence Layer};
+    \begin{scope}[on background layer]
+        \node [layer_box, fit=(infer_title) (embed) (gemini)] (infer_layer) {};
+    \end{scope}
+
+    % Connecting Arrows with Large Gap and Clear Labels
+    \path [line] (pres_layer.south) -- node [right=10pt, font=\normalsize\bfseries, text=blue!80!black] {REST / JSON (Axios)} (app_layer.north);
+    \path [line] (app_layer.south) -- node [right=10pt, font=\normalsize\bfseries, text=blue!80!black] {Embeddings, Aggregation \& Prompts} (infer_layer.north);
+
+\end{tikzpicture}
+}
+\caption{Tiered System Architecture of OpsMind AI}
+\label{fig:arch_diagram}
+\end{figure}
+
+\section{Data Flow and RAG Pipeline Architecture}
+\label{sec:design_rag_pipeline}
+
+The operational lifecycle of OpsMind AI is bifurcated into two coordinated execution pipelines: the \emph{Ingestion and Indexing Pipeline} and the \emph{Query and Retrieval Pipeline}.
+
+\subsection{Document Ingestion and Indexing Pipeline}
+The ingestion pipeline processes newly uploaded PDF manuals into searchable, high-dimensional vector representations through the following structured sequence of steps:
+
+\begin{enumerate}
+    \item \textbf{Step 1 (Upload Handling):} The client sends a multi-part form request containing the PDF binary. Multer intercepts the request, validates the MIME type, assigns a collision-resistant timestamped filename, and writes the file to the server storage directory.
+    \item \textbf{Step 2 (Text Stream Extraction):} The PDF parsing engine (\texttt{pdfjs-dist}) reads the binary buffer, parses document cross-reference tables, iterates through each page sequentially, and extracts textual tokens into structured page arrays.
+    \item \textbf{Step 3 (Sliding-Window Segmentation):} The extracted text for each page is divided into fixed-size chunks of 1,000 characters with a 100-character overlapping sliding window to ensure semantic continuity across split boundaries.
+    \item \textbf{Step 4 (Section Header Detection):} Each chunk is evaluated against an operational domain dictionary to identify relevant operational topics and classify the segment under specific section headers.
+    \item \textbf{Step 5 (Feature Extraction and Normalization):} The in-process ONNX neural pipeline transforms each text segment into a normalized 384-dimensional vector embedding.
+    \item \textbf{Step 6 (Atomic Indexing):} Pre-existing chunks belonging to the same filename are purged to prevent duplicate records, and the newly generated chunk documents containing embeddings, metadata, and text are bulk-inserted into MongoDB Atlas.
+\end{enumerate}
+
+\subsection{Query and Retrieval Pipeline}
+When an enterprise user submits an inquiry, the retrieval and answer generation pipeline executes as follows:
+
+\begin{enumerate}
+    \item \textbf{Step 1 (Query Vectorization):} The incoming natural language query string is passed to the embedding extractor, generating a normalized query vector $\mathbf{q} \in \mathbb{R}^{384}$.
+    \item \textbf{Step 2 (Approximate Nearest Neighbor Search):} A MongoDB vector search aggregation pipeline evaluates the query vector $\mathbf{q}$ against the indexed corpus using cosine similarity, sampling 100 candidate vectors and returning the top 5 closest chunks.
+    \item \textbf{Step 3 (Relevance Filtering):} The similarity score of the top-ranked chunk is checked against the threshold $\tau = 0.65$. If the score is below $\tau$, the pipeline terminates early and returns the standard refusal string.
+    \item \textbf{Step 4 (Context Assembly):} If relevant chunks are found, the text contents of the top-$k$ chunks are concatenated into a formatted context block.
+    \item \textbf{Step 5 (Generative Inference):} A strict anti-hallucination prompt containing the context and query is dispatched to the Gemini 2.5 Flash model.
+    \item \textbf{Step 6 (Response and Citation Dispatch):} The synthesized answer, along with granular metadata for each supporting chunk (filename, page, section, chunk index, similarity score), is returned to the user interface.
+\end{enumerate}
+
+\section{Database Schema and Vector Index Design}
+\label{sec:design_db_schema}
+
+OpsMind AI utilizes a document-oriented database schema designed to seamlessly accommodate text chunks, structural metadata, and dense floating-point vector arrays.
+
+\subsection{Chunk Collection Data Model}
+Each record in the primary \texttt{chunks} collection adheres to the structural model outlined in Table \ref{tab:chunk_schema}.
+
+\begin{table}[H]
+\centering
+\caption{Database Field Definitions for the Chunk Entity}
+\label{tab:chunk_schema}
+\resizebox{\textwidth}{!}{
+\begin{tabular}{|l|l|p{8cm}|}
+\hline
+\textbf{Field Name} & \textbf{Data Type} & \textbf{Description} \\ \hline
+\texttt{\_id} & \texttt{ObjectId} & Unique MongoDB document identifier \\ \hline
+\texttt{fileName} & \texttt{String} & Original filename of the ingested SOP manual \\ \hline
+\texttt{pdfPath} & \texttt{String} & Server-relative filesystem path to the uploaded PDF \\ \hline
+\texttt{pageNumber} & \texttt{Number} & 1-indexed page number where the chunk originates \\ \hline
+\texttt{section} & \texttt{String} & Classified operational section header or category \\ \hline
+\texttt{chunkIndex} & \texttt{Number} & Monotonically increasing chunk sequence index \\ \hline
+\texttt{text} & \texttt{String} & Raw extracted text content of the segment \\ \hline
+\texttt{charCount} & \texttt{Number} & Total character count within the text segment \\ \hline
+\texttt{embedding} & \texttt{Array<Number>} & 384-dimensional dense vector representation \\ \hline
+\texttt{metadata} & \texttt{Object} & Boundary offsets (start and end character indices) \\ \hline
+\end{tabular}
+}
+\end{table}
+
+\subsection{Vector Search Index Specification}
+To enable high-performance cosine similarity searches on the \texttt{embedding} field, an Atlas Vector Search index named \texttt{vector\_index} is configured with the parameters shown in Table \ref{tab:vector_index_spec}.
+
+\begin{table}[H]
+\centering
+\caption{Vector Search Index Configuration}
+\label{tab:vector_index_spec}
+\resizebox{\textwidth}{!}{
+\begin{tabular}{|l|l|p{7cm}|}
+\hline
+\textbf{Parameter} & \textbf{Setting} & \textbf{Technical Rationale} \\ \hline
+\textbf{Index Name} & \texttt{vector\_index} & Identifier used in aggregation queries \\ \hline
+\textbf{Field Path} & \texttt{embedding} & Target document field containing vector arrays \\ \hline
+\textbf{Dimensions} & \texttt{384} & Native output dimension of \texttt{all-MiniLM-L6-v2} \\ \hline
+\textbf{Similarity Metric} & \texttt{cosine} & Invariant to vector magnitude; evaluates angular orientation \\ \hline
+\textbf{NumCandidates} & \texttt{100} & Number of nearest neighbor candidates evaluated during graph traversal \\ \hline
+\textbf{Limit ($k$)} & \texttt{5} & Maximum top matching chunks returned for context compilation \\ \hline
+\end{tabular}
+}
+\end{table}
+
+\section{Chunking and Domain Section Classification Algorithm}
+\label{sec:design_algorithms}
+
+The text segmentation and domain classification procedure operates in structured mathematical steps without modifying original text semantics.
+
+\subsection{Sliding-Window Segmentation Procedure}
+Given an extracted page text string $T$ of character length $|T|$, a window size $W = 1000$, and a step overlap $S = 100$:
+
+\begin{enumerate}
+    \item Initialize pointer $p \leftarrow 0$ and sequence index $i \leftarrow 0$.
+    \item While $p < |T|$:
+    \begin{enumerate}
+        \item Define end boundary $e \leftarrow \min(p + W, |T|)$.
+        \item Extract substring $C_i \leftarrow T[p : e]$.
+        \item Determine operational section $H_i \leftarrow \text{ClassifySection}(C_i)$.
+        \item Emit chunk record with payload $(i, C_i, |C_i|, \text{PageNumber}, H_i)$.
+        \item Advance index $i \leftarrow i + 1$.
+        \item Advance pointer $p \leftarrow p + (W - S)$.
+    \end{enumerate}
+\end{enumerate}
+
+\subsection{Domain Section Classification Procedure}
+The section classification routine $\text{ClassifySection}(C)$ scans the chunk text against an ordered domain pattern set $\mathcal{P}$:
+
+\begin{equation}
+\begin{aligned}
+\mathcal{P} = \{ & \text{``Document Control''}, \text{``Executive Summary''}, \text{``Inbound Operations''}, \\
+& \text{``Inventory Audit Framework''}, \text{``Outbound Operations''}, \dots, \text{``Extreme Weather''}\}
+\end{aligned}
+\end{equation}
+
+For each pattern $P_j \in \mathcal{P}$, if $P_j \subseteq C$, the algorithm immediately returns $P_j$. If no patterns in $\mathcal{P}$ are detected, it assigns the default label \emph{``Unknown Section''}.
+
+\section{Context Grounding and Prompt Engineering}
+\label{sec:design_prompts}
+
+To guarantee factual adherence, prompt assembly enforces strict boundaries around the Large Language Model. The constructed prompt format isolates external knowledge:
+
+\begin{equation}
+\text{Prompt} = \mathcal{T}_{\text{system}} \oplus \mathcal{C}_{\text{retrieved}} \oplus \mathcal{Q}_{\text{user}}
+\end{equation}
+
+where $\mathcal{T}_{\text{system}}$ specifies the behavioral rules:
+\begin{enumerate}
+    \item The model must act exclusively as an authorized enterprise SOP assistant.
+    \item The model is explicitly forbidden from utilizing external parametric knowledge or guessing.
+    \item The answer must be derived solely from the provided context block $\mathcal{C}_{\text{retrieved}}$.
+    \item If the factual answer is not explicitly stated within $\mathcal{C}_{\text{retrieved}}$, the model must reply with the exact string: \emph{``I don't know based on uploaded SOPs.''}
+\end{enumerate}

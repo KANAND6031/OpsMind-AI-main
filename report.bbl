@@ -1,0 +1,76 @@
+\begin{thebibliography}{10}
+
+\bibitem{gao2023retrieval}
+Yunfan Gao, Yun Xiong, Xinyu Gao, Kangxiang Jia, Jinliu Pan, Yuxi Bi, Yi~Dai,
+  Jiawei Sun, Meng Wang, and Haofen Wang.
+\newblock Retrieval-augmented generation for large language models: A survey.
+\newblock {\em arXiv preprint arXiv:2312.10997}, 2023.
+
+\bibitem{geminiteam2023gemini}
+{Gemini Team, Google}.
+\newblock Gemini: A family of highly capable multimodal models.
+\newblock {\em arXiv preprint arXiv:2312.11805}, 2023.
+
+\bibitem{johnson2019billion}
+Jeff Johnson, Matthijs Douze, and Herv{\'e} J{\'e}gou.
+\newblock Billion-scale similarity search with {GPUs}.
+\newblock {\em IEEE Transactions on Big Data}, 7(3):535--547, 2019.
+
+\bibitem{karpukhin2020dense}
+Vladimir Karpukhin, Barlas Oguz, Sewon Min, Patrick Lewis, Ledell Wu, Sergey
+  Edunov, Danqi Chen, and Wen-tau Yih.
+\newblock Dense passage retrieval for open-domain question answering.
+\newblock {\em arXiv preprint arXiv:2004.04906}, 2020.
+
+\bibitem{lewis2020retrieval}
+Patrick Lewis, Ethan Perez, Aleksandra Piktus, Fabio Petroni, Vladimir
+  Karpukhin, Naman Goyal, Heinrich K{\"u}ttler, Mike Lewis, Wen-tau Yih, Tim
+  Rockt{\"a}schel, Sebastian Riedel, and Matthijs Douze.
+\newblock Retrieval-augmented generation for knowledge-intensive {NLP} tasks.
+\newblock {\em Advances in Neural Information Processing Systems},
+  33:9459--9474, 2020.
+
+\bibitem{malkov2018efficient}
+Yury~A Malkov and Dmitry~A Yashunin.
+\newblock Efficient and robust approximate nearest neighbor search using
+  hierarchical navigable small world graphs.
+\newblock {\em IEEE Transactions on Pattern Analysis and Machine Intelligence},
+  42(4):824--836, 2018.
+
+\bibitem{mongodb2023vector}
+{MongoDB Inc.}
+\newblock Atlas vector search: Semantic search and {RAG} at scale.
+\newblock \url{https://www.mongodb.com/products/platform/atlas-vector-search},
+  2023.
+
+\bibitem{reimers2019sentence}
+Nils Reimers and Iryna Gurevych.
+\newblock Sentence-{BERT}: Sentence embeddings using siamese {BERT}-networks.
+\newblock {\em arXiv preprint arXiv:1908.10084}, 2019.
+
+\bibitem{robertson2009probabilistic}
+Stephen Robertson, Hugo Zaragoza, et~al.
+\newblock The probabilistic relevance framework: {BM25} and beyond.
+\newblock {\em Foundations and Trends{\textregistered} in Information
+  Retrieval}, 3(4):333--389, 2009.
+
+\bibitem{vaswani2017attention}
+Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones,
+  Aidan~N Gomez, {\L}ukasz Kaiser, and Illia Polosukhin.
+\newblock Attention is all you need.
+\newblock {\em Advances in Neural Information Processing Systems},
+  30:5998--6008, 2017.
+
+\bibitem{wang2020minilm}
+Wenhui Wang, Furu Wei, Li~Dong, Hangbo Bao, Nan Yang, and Ming Zhou.
+\newblock Mini{LM}: Deep self-attention distillation for task-agnostic
+  compression of pre-trained transformers.
+\newblock {\em Advances in Neural Information Processing Systems},
+  33:5776--5788, 2020.
+
+\bibitem{xenova2023transformersjs}
+Joshua Xenova.
+\newblock Transformers.js: State-of-the-art machine learning for the web.
+\newblock \url{https://huggingface.co/docs/transformers.js}, 2023.
+
+\end{thebibliography}

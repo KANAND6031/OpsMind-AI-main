@@ -1,0 +1,104 @@
+\section{Document Processing Pipeline Implementation}
+\label{sec:impl_pdf_processing}
+
+The document processing subsystem is responsible for translating raw binary PDF streams into clean, structured textual segments ready for neural embedding.
+
+\subsection{PDF Text Stream Ingestion}
+File ingestion is executed via an asynchronous middleware pipeline. When an administrative user or operator submits a PDF document through the multipart upload endpoint, Multer intercepts the binary buffer and writes it to a managed server directory using an epoch-based timestamp to prevent name collisions. 
+
+The text extraction service leverages \texttt{pdfjs-dist} (legacy build), which directly parses the internal object tree and cross-reference streams of the PDF document without requiring external binary dependencies such as Poppler. The service opens a document handle, reads the total page count, and iterates through each page index sequentially. For every individual page, the text content layer is extracted by mapping individual glyph string items, normalizing whitespace, and compiling page-level text objects comprising the page index and extracted character stream.
+
+\subsection{Sliding-Window Text Segmentation}
+Once page-level strings are compiled, the chunking service processes each page array. A fixed window size of 1,000 characters with an overlap of 100 characters is enforced. The sliding window algorithm steps through the text, extracting bounded substrings. 
+
+Each generated chunk is immediately enriched with contextual metadata, including:
+\begin{itemize}
+    \item The originating original filename and physical storage path.
+    \item The exact 1-indexed document page number.
+    \item The classified operational section identifier, assigned by scanning the text against the codified enterprise domain taxonomy.
+    \item A monotonically increasing chunk sequence index for global document ordering.
+    \item The total character count of the chunk.
+\end{itemize}
+
+\section{Neural Embedding Engine Implementation}
+\label{sec:impl_embedding_engine}
+
+The embedding subsystem translates raw text chunks and user queries into dense 384-dimensional vector representations. 
+
+Rather than delegating embedding generation to high-latency external HTTP APIs, OpsMind AI incorporates an in-process embedding engine built on \texttt{@xenova/transformers}. The engine initializes a singleton feature-extraction pipeline utilizing the \texttt{Xenova/all-MiniLM-L6-v2} ONNX-optimized model. 
+
+When a text string is supplied to the pipeline:
+\begin{enumerate}
+    \item The model tokenizes the input using the WordPiece tokenization algorithm.
+    \item The token sequences are processed through 6 Transformer encoder layers.
+    \item A mean pooling operation is applied across the output token embeddings to produce a single sentence vector:
+    \begin{equation}
+    \mathbf{e}_{\text{pooled}} = \frac{1}{\sum_{j=1}^{L} m_j} \sum_{j=1}^{L} m_j \mathbf{h}_j
+    \label{eq:mean_pooling}
+    \end{equation}
+    where $\mathbf{h}_j$ is the hidden state of token $j$, $m_j \in \{0, 1\}$ represents the attention mask value, and $L$ denotes the input token length.
+    \item The resulting pooled vector is $L_2$-normalized to project the representation onto the unit hypersphere:
+    \begin{equation}
+    \mathbf{e}_{\text{normalized}} = \frac{\mathbf{e}_{\text{pooled}}}{\|\mathbf{e}_{\text{pooled}}\|_2}
+    \label{eq:l2_norm}
+    \end{equation}
+\end{enumerate}
+
+This normalization ensures that dot products computed during database search correspond directly to cosine similarity scores.
+
+\section{Vector Search Pipeline and Aggregation Engine}
+\label{sec:impl_vector_search}
+
+Retrieval execution in OpsMind AI is conducted via MongoDB Atlas Vector Search. The search service initiates an aggregation pipeline configured with specialized vector search stages:
+
+\begin{itemize}
+    \item \textbf{Vector Search Stage (\texttt{\$vectorSearch}):} Evaluates the 384-dimensional query vector against the persistent index \texttt{vector\_index}. The query specifies an exploration depth of 100 candidate vectors (\texttt{numCandidates: 100}) and requests the top 5 nearest neighbors (\texttt{limit: 5}).
+    \item \textbf{Projection Stage (\texttt{\$project}):} Extracts document metadata (filename, storage path, page number, section category, chunk index, text body) and captures the computed cosine similarity score via the metadata projection operator (\texttt{\$meta: "vectorSearchScore"}).
+\end{itemize}
+
+\subsection{Confidence Thresholding and Gating Logic}
+To eliminate spurious matches and guard against answering out-of-domain queries, the search route inspects the top similarity score ($s_{\max} = \text{Score}_1$). If $s_{\max} < 0.65$ or if zero matches are returned by the aggregation pipeline, the system bypasses LLM inference entirely, instantly returning the fallback refusal string to minimize response latency and cloud API costs.
+
+\section{Large Language Model Integration}
+\label{sec:impl_llm_integration}
+
+When retrieved chunks satisfy the relevance threshold, the context assembly service concatenates the top matching chunks into a formatted text block, prepending individual chunk index markers to preserve reference boundaries.
+
+The assembled prompt is dispatched to Google's Gemini 2.5 Flash model through the official \texttt{@google/genai} SDK. Gemini 2.5 Flash processes the context-bounded prompt and generates a concise, grammatically coherent, and factually grounded response. If the generated output is empty or whitespace-only, the system activates an automatic fallback safety rule.
+
+\section{Administrative Management Subsystem}
+\label{sec:impl_admin_subsystem}
+
+OpsMind AI provides a dedicated administrative API suite for repository lifecycle management:
+
+\begin{itemize}
+    \item \textbf{Document Inventory Discovery (\texttt{GET /api/admin/files}):} Executes an aggregation pipeline grouping stored chunks by \texttt{fileName}. It calculates the maximum page number and sums the total chunk count per document, returning an overview of all active SOPs.
+    \item \textbf{Atomic SOP Purging (\texttt{DELETE /api/admin/file/:fileName}):} Removes all chunk records associated with the specified filename, maintaining database cleanliness when documents are updated or retired.
+    \item \textbf{Document Re-indexing (\texttt{POST /api/admin/reindex/:fileName}):} Triggers batch reprocessing and vector generation for document collections.
+\end{itemize}
+
+\section{Frontend Architecture and Component Engineering}
+\label{sec:impl_frontend}
+
+The client-side interface of OpsMind AI is built as a modular Single Page Application (SPA) with React.js and Vite. The frontend architecture includes several purpose-built components:
+
+\begin{itemize}
+    \item \textbf{Sidebar Component (\texttt{Sidebar.jsx}):} Manages top-level application navigation across Chat, Upload, and Admin views, while featuring dark/light theme controls and persistent status indicators.
+    \item \textbf{Conversational Assistant View (\texttt{ChatSection.jsx}):} Renders conversational message threads, auto-scrolls to latest responses, handles keyboard submission events, displays animated loading indicators during inference, and renders structured citation cards for retrieved sources.
+    \item \textbf{SOP Upload and Progress View (\texttt{UploadSection.jsx}):} Provides multi-part file selection, tracks active upload percentage via Axios upload progress events, and renders the document statistics panel.
+    \item \textbf{Statistics Bar Component (\texttt{StatsBar.jsx}):} Renders four key metric widgets: Total Pages Processed, Total Chunks Indexed, Embedding Dimensions ($384$), and Active AI Model Name (Gemini 2.5 Flash).
+    \item \textbf{Source Citation Modal (\texttt{PDFModal.jsx}):} A modal dialog that renders when a user clicks on any citation card, presenting the exact section title, page number, and full text snippet for verification.
+    \item \textbf{Admin Management Dashboard (\texttt{AdminPage.jsx}):} Displays an administrative data table listing all stored SOP manuals, total pages, total chunks, and interactive buttons for document deletion and re-indexing.
+\end{itemize}
+
+\section{Error Handling and System Edge Cases}
+\label{sec:impl_error_handling}
+
+To ensure enterprise robustness, OpsMind AI incorporates comprehensive exception handling across all architectural tiers:
+
+\begin{itemize}
+    \item \textbf{Duplicate File Ingestion:} When an existing manual is re-uploaded, all previous chunks associated with that filename are deleted atomically prior to new chunk insertion, preventing duplicate search results.
+    \item \textbf{Corrupted PDF Ingestion:} If a PDF contains invalid xref tables or unreadable streams, the parsing stage traps the error and returns a 500 error code with a descriptive diagnostic message.
+    \item \textbf{Low-Confidence and Out-of-Scope Queries:} Handled deterministically at the vector retrieval stage by evaluating $s_{\max} < 0.65$, preventing irrelevant queries from reaching the LLM.
+    \item \textbf{Network and API Timeouts:} The frontend captures Axios network failures and displays user-friendly error banners without crashing the application state.
+\end{itemize}

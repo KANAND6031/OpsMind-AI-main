@@ -1,0 +1,223 @@
+\documentclass[a4paper, 11pt, oneside]{report} 
+
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage[dvipsnames,table,xcdraw]{xcolor}
+\usepackage[utf8]{inputenc} 
+\usepackage[T1]{fontenc} 
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts} 
+\usepackage{subcaption}
+\usepackage{tikz}
+\usetikzlibrary{shapes,positioning,fit,calc,backgrounds}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage[nottoc]{tocbibind}
+\usepackage{url}
+\usepackage{hyperref}
+\usepackage{amsmath}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue!80!black,
+    citecolor=green!60!black,
+    urlcolor=blue!70!black
+}
+
+\begin{document} 	
+
+	\begin{titlepage} 
+		\centering 
+		\vspace*{\baselineskip} 
+		\vspace{0.75\baselineskip}
+		
+		{\LARGE \textbf{OpsMind AI: Enterprise Standard Operating Procedure (SOP) Knowledge Assistant with Retrieval-Augmented Generation}}
+		
+		\vspace{1.5\baselineskip}
+
+		An internship report submitted for the course named\\
+		\textbf{Internship (CS4XX)}
+		
+		\vspace*{4\baselineskip}
+		
+		Submitted By
+		
+		\vspace{0.5\baselineskip}
+		
+		{\scshape\Large Krishna Anand\\ SEMESTER - VII \\ Roll No: 230101082}
+		
+		\vspace{1.5\baselineskip}
+		
+		Under the Guidance of
+		
+		\vspace{0.5\baselineskip}
+		
+		{\scshape\Large Dr. Rajkumari Bidyalakshmi Devi\\ Department of Computer Science and Engineering}
+		
+		\vfill
+		
+		\begin{center}
+			\includegraphics[width=4.5cm]{report_file/iiit manipur.png}
+		\end{center}
+	
+	{\scshape\small Department of Computer Science and Engineering\\ Indian Institute of Information Technology Senapati, Manipur \\ Month, Year}
+	
+\end{titlepage}
+
+%----------------------------------------------------------------------------------------
+% Declaration
+%----------------------------------------------------------------------------------------
+
+\newpage
+\begin{center}
+   { \LARGE \textbf{Declaration}}
+\end{center}
+\vspace{1cm}
+In this submission, I have expressed my idea in my own words, and I have adequately cited and referenced any ideas or words that were taken from another source. I also declare that I adhere to all principles of academic honesty and integrity and that I have not misrepresented or falsified any ideas, data, facts, or sources in this submission. If any violation of the above is made, I understand that the institute may take disciplinary action. Such a violation may also engender disciplinary action from the sources which were not properly cited or permission not taken when needed.
+
+\vspace{2cm}
+\begin{flushright}
+KRISHNA ANAND \\
+Roll No: 230101082 \\
+Date: \today
+\end{flushright}
+
+%----------------------------------------------------------------------------------------
+% Certificate
+%----------------------------------------------------------------------------------------
+
+\newpage
+\thispagestyle{empty}
+\begin{center}
+	\begin{table}[H]
+		\centering
+		\includegraphics[scale=0.18]{report_file/iiit manipur.png}
+		\begin{tabular}{l}
+			\textbf{Department of Computer Science and Engineering} \\
+			\textbf{Indian Institute of Information Technology Senapati, Manipur} \\
+		\end{tabular}
+	\end{table}
+	\par\noindent\rule{\textwidth}{0.4pt}
+	\vspace{0.3cm}
+	
+	\begin{flushleft}
+	Dr. Rajkumari Bidyalakshmi Devi \hfill Email: \href{mailto:bidyalakshmi@iiitmanipur.ac.in}{bidyalakshmi@iiitmanipur.ac.in}\\
+	Assistant Professor \hfill Contact No: +91-7005126046\\
+	\end{flushleft}
+	
+	\vspace{0.6cm}
+	{\LARGE \textbf{\emph{To Whom It May Concern}}}\\[0.8cm]
+	\linespread{1.2}
+	\large{This is to certify that the internship report entitled \textbf{``OpsMind AI: Enterprise Standard Operating Procedure (SOP) Knowledge Assistant with Retrieval-Augmented Generation'',} submitted to the Department of Computer Science and Engineering, Indian Institute of Information Technology Senapati, Manipur in partial fulfillment for the award of degree of \textbf{Bachelor of Technology in Computer Science and Engineering} is a record of bonafide work carried out by \textbf{Krishna Anand} bearing roll number \textbf{230101082}.}\\[1.2cm]
+	
+	\begin{flushright}
+	\large{Signature of Faculty Advisor}\\[0.3cm]
+	\textbf{(Dr. Rajkumari Bidyalakshmi Devi)}\\[0.3cm]
+	\end{flushright}
+		
+\end{center}
+\vspace{0.4cm}
+\noindent Signature of the Examiner 1: ....................................................\\[0.5cm]
+\noindent Signature of the Examiner 2: ....................................................\\[0.5cm]
+\noindent Signature of the Examiner 3: ....................................................\\[0.5cm]
+\noindent Signature of the Examiner 4: ....................................................
+
+%----------------------------------------------------------------------------------------
+% Internship Documents Notice
+%----------------------------------------------------------------------------------------
+
+\newpage
+\begin{center}
+    {\LARGE \textbf{Internship Documents}}
+\end{center}
+\vspace{1cm}
+\textbf{Attach Internship Offer Letter(s) and Internship Completion Certificate(s) here.}
+
+\vspace{1cm}
+\textbf{Report}: At the end of the internship, students need to submit a comprehensive internship report duly signed by the supervisor/mentor appointed by the industry/institute to the Head of Department along with the internship offer-letter. In case of multiple internships, multiple offer letters must be submitted. The internship report must include a certificate from the supervisor stating that the work done is genuine and is not copied from any other sources. The name of the supervisor, designation, name of the organization, official email ID, and phone number should be clearly stated.
+
+\vspace{1cm}
+\textbf{Evaluation}: Students need to present the work done to the evaluation committee of the CSE department, IIIT Manipur.
+
+%----------------------------------------------------------------------------------------
+% Abstract
+%----------------------------------------------------------------------------------------
+
+\newpage
+\begin{abstract}
+In large-scale enterprise environments such as automated fulfillment centers, logistics hubs, and regulatory compliance units, Standard Operating Procedures (SOPs) are critical for ensuring operational fidelity, safety adherence, and procedural compliance. However, employees frequently encounter significant operational latency and cognitive friction when navigating multi-hundred-page technical PDF documentation. Traditional keyword-based retrieval methods (e.g., BM25) fail to resolve semantic paraphrasing and conceptual intent, while raw generative Large Language Models (LLMs) present substantial compliance risks due to their susceptibility to hallucinations and lack of verifiable provenance.
+
+To address these challenges, this report presents \textbf{OpsMind AI}, an enterprise-grade SOP Knowledge Assistant based on the paradigm of Retrieval-Augmented Generation (RAG). OpsMind AI automates the end-to-end ingestion and indexing of complex PDF manuals by executing text stream parsing, sliding-window chunk segmentation ($1,000$ characters with $100$ character overlap), domain section categorization, and in-process dense vector generation using the 384-dimensional \texttt{all-MiniLM-L6-v2} Transformer model. High-dimensional vector representations are indexed directly within MongoDB Atlas, enabling sub-second Approximate Nearest Neighbor (ANN) cosine similarity retrieval.
+
+Upon receiving a natural language query, the system retrieves the top-$k$ most relevant context segments, validates relevance against a strict similarity threshold ($\tau = 0.65$), and synthesizes a factually grounded response using Google Gemini 2.5 Flash. Every answer is coupled with granular source attribution—including document name, exact page number, section category, chunk index, and cosine similarity score—with interactive modal snippet verification. Empirical evaluation on an enterprise SOP manual of 46 pages and 205 indexed chunks demonstrated an end-to-end response time of $865\text{ ms}$, $100\%$ grounding accuracy on verified procedures, and zero hallucination on out-of-domain inquiries.
+\end{abstract}
+
+%----------------------------------------------------------------------------------------
+% Acknowledgement
+%----------------------------------------------------------------------------------------
+
+\newpage
+\begin{center}
+    { \LARGE \textbf{Acknowledgement}}
+\end{center}
+\vspace{1.5cm}
+I would like to express my sincere gratitude and deep respect to my faculty advisor, \textbf{Dr. Rajkumari Bidyalakshmi Devi}, Department of Computer Science and Engineering, Indian Institute of Information Technology Senapati, Manipur, for providing invaluable guidance, constructive feedback, and continuous support throughout the duration of this internship.
+
+I extend my heartfelt thanks to the Head of the Department and the esteemed faculty members of the Department of Computer Science and Engineering, IIIT Manipur, for providing the necessary academic infrastructure, computational resources, and encouraging environment essential for the completion of this work.
+
+I am also thankful to my peers, friends, and family for their unwavering encouragement, insightful discussions, and moral support during the design, implementation, and documentation of OpsMind AI.
+
+\vspace{2cm}
+\begin{flushright}
+Krishna Anand\\
+Roll No: 230101082\\
+Department of Computer Science and Engineering\\
+Indian Institute of Information Technology Senapati, Manipur
+\end{flushright}
+
+%----------------------------------------------------------------------------------------
+% Table of Contents, Lists
+%----------------------------------------------------------------------------------------
+
+\newpage
+\tableofcontents
+\listoffigures
+\listoftables
+
+%----------------------------------------------------------------------------------------
+% Main Chapters
+%----------------------------------------------------------------------------------------
+
+\chapter{Introduction}
+\input{chapters/1_Introduction}
+
+\chapter{Literature Survey}
+\input{chapters/2_Literature_Survey}
+
+\chapter{Requirement Engineering}
+\input{chapters/3_Requirement}
+
+\chapter{System Design}
+\input{chapters/4_System_Design}
+
+\chapter{Implementation}
+\input{chapters/5_Implementation}
+
+\chapter{Results}
+\input{chapters/6_Results}
+
+\chapter{Conclusion}
+\input{chapters/7_Conclusion}
+
+%----------------------------------------------------------------------------------------
+% Bibliography
+%----------------------------------------------------------------------------------------
+
+\bibliography{report}
+\bibliographystyle{plain}
+
+\end{document}

@@ -1,0 +1,45 @@
+\section{Outline}
+\label{sec:intro_outline}
+
+In modern distributed enterprise environments, organizational knowledge is heavily codified into formal operational guidelines known as Standard Operating Procedures (SOPs). These documents define baseline standards, compliance mandates, troubleshooting workflows, incident response protocols, logistics guidelines, and administrative hierarchies across departments. As enterprises expand their operational footprint, SOP repositories scale rapidly in volume, complexity, and domain specialization. 
+
+Traditional information management systems typically rely on manual folder structures, intranet portals, and static keyword indexing techniques (such as boolean string matching or BM25 probabilistic ranking). In high-throughput industrial settings—such as automated fulfillment centers, supply chain delivery hubs, cross-docking warehouses, customer support centers, and regulated compliance offices—personnel encounter severe cognitive friction when attempting to locate granular, unambiguous answers within dense, multi-hundred-page technical manuals. 
+
+The advent of Large Language Models (LLMs) and Transformer-based natural language processing has introduced transformative possibilities for conversational knowledge access. However, deploying raw generative models directly in enterprise knowledge workflows introduces severe risks, most notably \emph{hallucination} (the generation of factually unsupported or fabricated statements), lack of verifiable source provenance, and an inability to dynamically integrate proprietary, internal documentation without costly fine-tuning.
+
+To solve these systemic bottlenecks, this internship develops \textbf{OpsMind AI}, an intelligent, enterprise-grade SOP Knowledge Assistant built upon the paradigm of \emph{Retrieval-Augmented Generation} (RAG). OpsMind AI ingests unformatted organizational SOP documents in Portable Document Format (PDF), parses and segments dense content into overlapping semantic text chunks, projects these textual representations into a high-dimensional continuous metric space using dense transformer embeddings, indexes them within a cloud-native vector database, and executes semantic vector retrieval to feed context-bounded prompts into Google's state-of-the-art Gemini Large Language Model. The system strictly enforces attribution, displaying the exact source document, page number, operational section header, chunk identifier, and cosine similarity metric alongside every synthesized answer.
+
+\section{Problem Statement}
+\label{sec:intro_problem_statement}
+
+Enterprise knowledge retrieval within operational environments faces several critical challenges:
+
+\begin{enumerate}
+    \item \textbf{High Information Latency and Operational Friction:} Employees, floor leads, and administrative personnel spend disproportionate time manually searching through voluminous PDFs to find specific guidelines (e.g., Return-to-Stock target rates, parcel weight tolerances, hazard containment procedures, or escalation matrices). This manual lookup increases task completion time and degrades frontline productivity.
+    \item \textbf{Limitations of Lexical Search:} Traditional keyword-based search algorithms fail when the user's query vocabulary diverges from the exact phrasing in the source manual. Conceptual inquiries (e.g., asking about ``workflow for handling damaged goods'' versus manual headings stating ``Damaged Inventory Processing'') yield poor recall or irrelevant matches.
+    \item \textbf{Hallucination and Compliance Vulnerability in Standard AI Models:} Generic generative AI systems answer queries based on parametric knowledge acquired during pre-training. In enterprise contexts, parametric guessing can lead to severe operational errors, safety violations, or compliance breaches. A dependable enterprise system must provide strictly grounded answers and explicitly decline to answer when the information is absent from authorized documentation.
+    \item \textbf{Absence of Granular Source Attribution:} Standard conversational agents provide text responses without traceable evidence. Without instant visibility into the exact originating page, document name, and text excerpt, human operators cannot independently audit or verify AI-generated answers.
+\end{enumerate}
+
+\section{Motivation}
+\label{sec:intro_motivation}
+
+The primary motivation behind OpsMind AI is to bridge the operational gap between static enterprise documentation and agile human decision-making. By converting static PDF manuals into an interactive, semantic knowledge graph, organizations can democratize access to critical operating knowledge while maintaining mathematical precision, complete auditability, and zero tolerance for fabricated answers.
+
+Modern fulfillment centers, delivery hubs, and administrative divisions require sub-second access to operational parameters. When an operator queries an approval chain, a cycle count frequency, or an emergency evacuation protocol, the assistant must return not only the definitive procedure but also the exact page reference for institutional accountability. 
+
+Furthermore, building an end-to-end decoupled architecture—integrating in-process dense embedding pipelines, scalable vector database indexing, and advanced generative reasoning—provides a cost-effective, maintainable blueprint for next-generation enterprise knowledge management without requiring massive model retraining or specialized hardware clusters.
+
+\section{Purpose}
+\label{sec:intro_purpose}
+
+The purpose of this internship work is to design, implement, and rigorously evaluate an end-to-end enterprise knowledge retrieval and conversational assistant system. Specifically, the internship aims to fulfill the following objectives:
+
+\begin{itemize}
+    \item \textbf{Automated Document Ingestion and Segmentation:} Develop an automated ingestion pipeline capable of parsing multi-page enterprise PDF documents, executing intelligent text extraction, and generating normalized, overlapping text chunks to preserve local context across boundaries.
+    \item \textbf{Domain-Specific Section Categorization:} Implement an automated heuristic classification system that identifies operational sections (e.g., Inbound Operations, Inventory Audit Framework, Outbound Operations, Safety, Business Continuity) and attaches rich metadata to segmented chunks.
+    \item \textbf{Dense Semantic Vector Generation:} Integrate high-efficiency transformer embeddings via in-process neural pipeline architectures (utilizing the 384-dimensional \emph{all-MiniLM-L6-v2} model) to capture deep semantic relationships between operational queries and document segments.
+    \item \textbf{Scalable Vector Indexing and Similarity Search:} Deploy and configure a high-dimensional vector search index within MongoDB Atlas, enabling sub-second approximate nearest neighbor (ANN) retrieval with cosine similarity scoring.
+    \item \textbf{Strictly Grounded Generative Synthesis:} Integrate Google's Gemini 2.5 Flash generative model through structured, zero-hallucination prompt constraints, enforcing that all answers are synthesized strictly from retrieved contextual snippets with a conservative similarity threshold fallback mechanism.
+    \item \textbf{Interactive User and Administrative Interfaces:} Construct a responsive, modern web interface with dual-theme capabilities, real-time citation viewing with modal snippet inspection, dynamic document analytics, and administrative document lifecycle management.
+\end{itemize}

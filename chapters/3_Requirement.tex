@@ -1,0 +1,149 @@
+\section{Functional Requirements}
+\label{sec:req_functional}
+
+The functional requirements define the core operational capabilities and services that OpsMind AI must deliver. These requirements are categorized into document ingestion, semantic retrieval, answer generation, source attribution, and administrative management.
+
+\begin{enumerate}
+    \item \textbf{FR-1: PDF Document Upload and Validation:}
+    \begin{itemize}
+        \item The system shall provide an intuitive drag-and-drop and file-browser interface for uploading enterprise SOP documents in Portable Document Format (PDF).
+        \item The backend shall enforce MIME-type validation, ensuring only valid PDF files are processed, and assign collision-resistant unique timestamps to stored physical files.
+    \end{itemize}
+    \item \textbf{FR-2: Automated Text Extraction and Pagination:}
+    \begin{itemize}
+        \item The document processing service shall extract UTF-8 encoded text streams from each page of the uploaded PDF sequentially while preserving exact page boundaries and page indices.
+        \item The system shall calculate and display document-level statistics including total page count and total extracted character length.
+    \end{itemize}
+    \item \textbf{FR-3: Sliding-Window Semantic Chunking:}
+    \begin{itemize}
+        \item The system shall segment contiguous page text into standardized text blocks with a predefined maximum length of 1,000 characters.
+        \item To preserve contextual continuity across adjacent chunks, a fixed sliding overlap of 100 characters shall be maintained between successive segments.
+    \end{itemize}
+    \item \textbf{FR-4: Domain Section Classification and Metadata Tagging:}
+    \begin{itemize}
+        \item The chunking service shall analyze each text segment against a codified taxonomy of operational section headers (e.g., \emph{Document Control}, \emph{Inbound Operations}, \emph{Trailer Docking}, \emph{Inventory Audit Framework}, \emph{Outbound Operations}, \emph{Safety and PPE}, \emph{Business Continuity}).
+        \item Each chunk shall be tagged with its originating filename, physical storage path, page number, section category, and sequential chunk index.
+    \end{itemize}
+    \item \textbf{FR-5: In-Process Dense Embedding Generation:}
+    \begin{itemize}
+        \item The system shall compute a normalized 384-dimensional dense semantic embedding vector for each text chunk using the pre-trained \texttt{all-MiniLM-L6-v2} Transformer model.
+        \item Embeddings shall be generated during ingestion and indexed directly into the persistent vector database.
+    \end{itemize}
+    \item \textbf{FR-6: Real-Time Vector Similarity Search:}
+    \begin{itemize}
+        \item Upon receiving a user query, the system shall dynamically compute its 384-dimensional embedding and execute an Approximate Nearest Neighbor search against the indexed document vectors.
+        \item The search pipeline shall retrieve the top-$k$ most relevant chunks ($k=5$) ranked by cosine similarity score.
+    \end{itemize}
+    \item \textbf{FR-7: Strict Context-Grounded Answer Synthesis:}
+    \begin{itemize}
+        \item The system shall evaluate the top similarity score against a strict relevance threshold ($\tau = 0.65$).
+        \item If the similarity score is below $\tau$, or if no matching chunks exist, the system shall immediately return the standard refusal: \emph{``I don't know based on uploaded SOPs.''}
+        \item For validated queries, a context prompt combining the retrieved snippets and user question shall be dispatched to Google Gemini 2.5 Flash for natural language answer generation.
+    \end{itemize}
+    \item \textbf{FR-8: Source Attribution and Interactive Snippet Inspection:}
+    \begin{itemize}
+        \item Every generated response shall be accompanied by structured citation cards displaying the source filename, page number, section header, chunk index, and similarity score.
+        \item Users shall be able to click on citation references to trigger a modal overlay displaying the exact text snippet extracted from the SOP.
+    \end{itemize}
+    \item \textbf{FR-9: Administrative Document Management:}
+    \begin{itemize}
+        \item The administrative dashboard shall list all indexed SOP documents along with their total page count and total indexed chunk count.
+        \item Administrators shall have the ability to delete document indices and trigger document re-indexing pipelines.
+    \end{itemize}
+\end{enumerate}
+
+\section{Non-Functional Requirements}
+\label{sec:req_non_functional}
+
+Non-functional requirements specify the quality attributes, performance constraints, and architectural standards governing the system:
+
+\begin{enumerate}
+    \item \textbf{Performance and Latency:}
+    \begin{itemize}
+        \item Vector retrieval latency across an index of thousands of chunks shall not exceed 150 milliseconds.
+        \item Total end-to-end query turnaround time (from user submission to completed LLM answer generation) shall remain below 2.5 seconds under standard network conditions.
+    \end{itemize}
+    \item \textbf{Accuracy and Hallucination Resistance:}
+    \begin{itemize}
+        \item The system must achieve 100\% factual grounding relative to the retrieved context chunks, preventing the model from incorporating external or unverified parametric knowledge.
+    \end{itemize}
+    \item \textbf{Scalability and Concurrency:}
+    \begin{itemize}
+        \item The backend architecture must be stateless and asynchronous, allowing horizontal scaling behind load balancers to support concurrent enterprise users.
+    \end{itemize}
+    \item \textbf{Security and Privacy:}
+    \begin{itemize}
+        \item All sensitive API keys and database credentials must be isolated within encrypted environment variables.
+        \item Cross-Origin Resource Sharing (CORS) must be explicitly configured to restrict unauthorized API access.
+    \end{itemize}
+    \item \textbf{Usability and Accessibility:}
+    \begin{itemize}
+        \item The user interface must support responsive viewing across desktop monitors, warehouse ruggedized tablets, and mobile devices.
+        \item The interface must provide a modern dark/light mode toggle with persistent local storage state.
+    \end{itemize}
+\end{enumerate}
+
+\section{Hardware and Software Requirements}
+\label{sec:req_hw_sw}
+
+The development and execution environment specifications for OpsMind AI are detailed in Table \ref{tab:req_env_specs}.
+
+\begin{table}[H]
+\centering
+\caption{System Hardware and Software Specifications}
+\label{tab:req_env_specs}
+\resizebox{\textwidth}{!}{
+\begin{tabular}{|l|l|p{7.5cm}|}
+\hline
+\textbf{Category} & \textbf{Component} & \textbf{Specification / Version} \\ \hline
+\textbf{Server Hardware} & Processor & Multi-core x86-64 CPU (minimum 4 cores, 2.4 GHz) \\ \cline{2-3}
+ & RAM & Minimum 8 GB DDR4 (16 GB recommended for high-volume embedding) \\ \cline{2-3}
+ & Storage & 20 GB SSD storage for operating system, temporary uploads, and logs \\ \hline
+\textbf{Client Hardware} & Device Types & Modern PC, Laptop, or Tablet with Chromium/Webkit-compatible browser \\ \hline
+\textbf{Software Stack} & Runtime & Node.js (v18.x to v24.x LTS) / ECMAScript 2023 \\ \cline{2-3}
+ & Backend Framework & Express.js 5.1.0 with CORS and Multer \\ \cline{2-3}
+ & Frontend Framework & React.js 18.x with Vite build tool and Tailwind CSS \\ \cline{2-3}
+ & Database & MongoDB Atlas (Version 7.0+) with Vector Search enabled \\ \cline{2-3}
+ & PDF Parser & \texttt{pdfjs-dist} (v6.0+) and \texttt{pdf-parse} \\ \cline{2-3}
+ & Embedding Pipeline & \texttt{@xenova/transformers} (v2.17.2, \texttt{all-MiniLM-L6-v2}) \\ \cline{2-3}
+ & Generative AI API & \texttt{@google/genai} (v2.7.0, Gemini 2.5 Flash) \\ \hline
+\end{tabular}
+}
+\end{table}
+
+\section{User Personas and Use Case Analysis}
+\label{sec:req_use_cases}
+
+To ensure complete alignment with enterprise workflows, OpsMind AI is designed around key user personas operating across different levels of the organizational hierarchy:
+
+\begin{itemize}
+    \item \textbf{Warehouse Floor Operator / Associate:} Requires rapid, unambiguous instructions regarding operational thresholds, such as package weight limits, damaged goods triage procedures, or trailer docking safety rules. Requires direct page references to resolve discrepancies on the floor.
+    \item \textbf{Operations and Shift Manager:} Queries governance hierarchies, approval chains, shift handover procedures, and emergency contingency protocols during active operational shifts.
+    \item \textbf{Quality Assurance and Compliance Auditor:} Audits standard operating procedures against live system outputs to ensure regulatory adherence and safety protocol compliance.
+    \item \textbf{System Administrator:} Responsible for onboarding new operational manuals, deprecating obsolete SOPs, inspecting chunk-level indexing statistics, and monitoring vector search performance.
+\end{itemize}
+
+Figure \ref{fig:use_case_flow} summarizes the primary interaction modalities between enterprise users and the OpsMind AI knowledge platform.
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[node distance=1.8cm, auto,
+    block/.style={rectangle, draw, fill=blue!10, text width=7cm, text centered, rounded corners, minimum height=1.2cm},
+    actor/.style={rectangle, draw, fill=green!15, text width=4cm, text centered, rounded corners, minimum height=1cm},
+    line/.style={draw, ->, thick}]
+    
+    \node [actor] (user) {Enterprise Operator / Manager};
+    \node [block, below of=user] (search) {Natural Language Query Formulation \& Vector Search};
+    \node [block, below of=search] (rag) {Grounded Answer Synthesis \& Source Attribution};
+    \node [actor, right of=user, node distance=7.5cm] (admin) {System Administrator};
+    \node [block, below of=admin] (upload) {SOP PDF Ingestion, Chunking \& Embedding};
+    \node [block, below of=upload] (manage) {Document Repository Audit \& Re-indexing};
+    
+    \path [line] (user) -- (search);
+    \path [line] (search) -- (rag);
+    \path [line] (admin) -- (upload);
+    \path [line] (upload) -- (manage);
+\end{tikzpicture}
+\caption{Primary Use Case Flow for Operators and Administrators in OpsMind AI}
+\label{fig:use_case_flow}
+\end{figure}
