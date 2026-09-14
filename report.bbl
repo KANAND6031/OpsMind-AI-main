@@ -1,11 +1,5 @@
 \begin{thebibliography}{10}
 
-\bibitem{gao2023retrieval}
-Yunfan Gao, Yun Xiong, Xinyu Gao, Kangxiang Jia, Jinliu Pan, Yuxi Bi, Yi~Dai,
-  Jiawei Sun, Meng Wang, and Haofen Wang.
-\newblock Retrieval-augmented generation for large language models: A survey.
-\newblock {\em arXiv preprint arXiv:2312.10997}, 2023.
-
 \bibitem{geminiteam2023gemini}
 {Gemini Team, Google}.
 \newblock Gemini: A family of highly capable multimodal models.

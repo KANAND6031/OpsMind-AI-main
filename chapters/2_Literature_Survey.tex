@@ -39,13 +39,6 @@ The \emph{MiniLM} architecture \cite{wang2020minilm} applies deep self-attention
 
 The concept of Retrieval-Augmented Generation (RAG) was formally introduced by Lewis et al. \cite{lewis2020retrieval} to combine pre-trained parametric memory (the internal weights of a generative neural network) with non-parametric external memory (a dynamically searchable index of authoritative documents).
 
-In a standard RAG pipeline \cite{gao2023retrieval}, when a user submits a natural language query $x$, the retrieval component $p_\eta(z|x)$ identifies top-$k$ relevant text passages $z \in \mathcal{Z}$. The generative component $p_\theta(y|x, z)$ then conditions on both the query $x$ and the retrieved evidence passages $z$ to synthesize the target sequence $y$:
-
-\begin{equation}
-P(y|x) = \sum_{z \in \text{Top-}k(\mathcal{Z})} p_\eta(z|x) \prod_{i=1}^N p_\theta(y_i | x, z, y_{1:i-1})
-\label{eq:rag_formulation}
-\end{equation}
-
 RAG provides three indispensable advantages for enterprise deployment:
 \begin{enumerate}
     \item \textbf{Dynamic Knowledge Updates:} New documents, modified SOPs, and compliance updates can be indexed instantaneously without triggering costly and time-consuming LLM fine-tuning.
@@ -66,26 +59,3 @@ ANN algorithms construct graph-based or tree-based indices to achieve logarithmi
 The generative synthesis in OpsMind AI is powered by Google's Gemini family of models \cite{geminiteam2023gemini}. Specifically, Gemini 2.5 Flash is optimized for high-throughput, low-latency reasoning and summarization tasks. Its multi-head self-attention mechanisms and extended context window enable the model to ingest multiple retrieved chunks simultaneously, reconcile slight terminological variations, and synthesize coherent, step-by-step instructions.
 
 To prevent the model from answering beyond the scope of verified company documentation, strict system instructions are embedded into the prompt template. If the maximum similarity score among retrieved chunks falls below a predefined confidence threshold $\tau$, or if the information is absent from the provided context, the model is deterministically instructed to return an explicit fallback response: \emph{``I don't know based on uploaded SOPs.''}
-
-\section{Comparative Analysis of Knowledge Retrieval Approaches}
-\label{sec:lit_comparative_table}
-
-Table \ref{tab:lit_comparison} presents a comprehensive comparative analysis of existing enterprise knowledge management paradigms against the OpsMind AI architecture.
-
-\begin{table}[H]
-\centering
-\caption{Comparison of Enterprise Knowledge Management Approaches}
-\label{tab:lit_comparison}
-\resizebox{\textwidth}{!}{
-\begin{tabular}{|l|p{3.8cm}|p{4.2cm}|p{4.5cm}|}
-\hline
-\textbf{Evaluation Metric} & \textbf{Traditional Lexical Search (BM25)} & \textbf{Pure Generative LLMs (No RAG)} & \textbf{OpsMind AI (RAG with Vector Indexing)} \\ \hline
-\textbf{Search Paradigm} & Exact keyword matching & Parametric memory recall & Dense semantic vector retrieval \\ \hline
-\textbf{Synonym \& Intent Handling} & Poor; relies on exact token overlap & High; understands nuance & High; metric space spatial proximity \\ \hline
-\textbf{Source Provenance} & Returns full documents only & Absent; generates raw unverified text & Exact page, section, chunk, and score attribution \\ \hline
-\textbf{Hallucination Risk} & None (returns static files) & High; fabricates plausible facts & Strictly bounded by contextual constraints and similarity thresholds \\ \hline
-\textbf{Dynamic Knowledge Updating} & Requires re-indexing inverted index & Requires complete model retraining or fine-tuning & Real-time on-the-fly chunk insertion and vector indexing \\ \hline
-\textbf{Response Format} & Raw document links & Synthesized conversational text & Synthesized grounded answer with source citation cards \\ \hline
-\end{tabular}
-}
-\end{table}

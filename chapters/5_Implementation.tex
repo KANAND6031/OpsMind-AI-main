@@ -20,31 +20,6 @@ Each generated chunk is immediately enriched with contextual metadata, including
     \item The total character count of the chunk.
 \end{itemize}
 
-\section{Neural Embedding Engine Implementation}
-\label{sec:impl_embedding_engine}
-
-The embedding subsystem translates raw text chunks and user queries into dense 384-dimensional vector representations. 
-
-Rather than delegating embedding generation to high-latency external HTTP APIs, OpsMind AI incorporates an in-process embedding engine built on \texttt{@xenova/transformers}. The engine initializes a singleton feature-extraction pipeline utilizing the \texttt{Xenova/all-MiniLM-L6-v2} ONNX-optimized model. 
-
-When a text string is supplied to the pipeline:
-\begin{enumerate}
-    \item The model tokenizes the input using the WordPiece tokenization algorithm.
-    \item The token sequences are processed through 6 Transformer encoder layers.
-    \item A mean pooling operation is applied across the output token embeddings to produce a single sentence vector:
-    \begin{equation}
-    \mathbf{e}_{\text{pooled}} = \frac{1}{\sum_{j=1}^{L} m_j} \sum_{j=1}^{L} m_j \mathbf{h}_j
-    \label{eq:mean_pooling}
-    \end{equation}
-    where $\mathbf{h}_j$ is the hidden state of token $j$, $m_j \in \{0, 1\}$ represents the attention mask value, and $L$ denotes the input token length.
-    \item The resulting pooled vector is $L_2$-normalized to project the representation onto the unit hypersphere:
-    \begin{equation}
-    \mathbf{e}_{\text{normalized}} = \frac{\mathbf{e}_{\text{pooled}}}{\|\mathbf{e}_{\text{pooled}}\|_2}
-    \label{eq:l2_norm}
-    \end{equation}
-\end{enumerate}
-
-This normalization ensures that dot products computed during database search correspond directly to cosine similarity scores.
 
 \section{Vector Search Pipeline and Aggregation Engine}
 \label{sec:impl_vector_search}

@@ -1,5 +1,6 @@
 \documentclass[a4paper, 11pt, oneside]{report} 
 
+\usepackage[margin=1in]{geometry}
 \usepackage{graphicx}
 \usepackage{float}
 \usepackage[dvipsnames,table,xcdraw]{xcolor}
@@ -18,6 +19,7 @@
 \usepackage{array}
 \usepackage[nottoc]{tocbibind}
 \usepackage{url}
+\usepackage{setspace}
 \usepackage{hyperref}
 \usepackage{amsmath}
 
@@ -39,8 +41,7 @@
 		
 		\vspace{1.5\baselineskip}
 
-		An internship report submitted for the course named\\
-		\textbf{Internship (CS4XX)}
+		A report submitted for the course named Project/Internship- (CS4204)
 		
 		\vspace*{4\baselineskip}
 		
@@ -64,7 +65,7 @@
 			\includegraphics[width=4.5cm]{report_file/iiit manipur.png}
 		\end{center}
 	
-	{\scshape\small Department of Computer Science and Engineering\\ Indian Institute of Information Technology Senapati, Manipur \\ Month, Year}
+	{\scshape\small Department of Computer Science and Engineering\\ Indian Institute of Information Technology Senapati, Manipur \\ September, 2026}
 	
 \end{titlepage}
 
@@ -82,9 +83,10 @@ In this submission, I have expressed my idea in my own words, and I have adequat
 \vspace{2cm}
 \begin{flushright}
 KRISHNA ANAND \\
-Roll No: 230101082 \\
-Date: \today
+Roll No: 230101082
 \end{flushright}
+\vspace{0.3cm}
+\noindent Date:
 
 %----------------------------------------------------------------------------------------
 % Certificate
@@ -92,34 +94,37 @@ Date: \today
 
 \newpage
 \thispagestyle{empty}
-\begin{center}
-	\begin{table}[H]
-		\centering
-		\includegraphics[scale=0.18]{report_file/iiit manipur.png}
-		\begin{tabular}{l}
-			\textbf{Department of Computer Science and Engineering} \\
-			\textbf{Indian Institute of Information Technology Senapati, Manipur} \\
-		\end{tabular}
-	\end{table}
-	\par\noindent\rule{\textwidth}{0.4pt}
-	\vspace{0.3cm}
+\noindent
+\begin{minipage}[c]{0.13\textwidth}
+	\includegraphics[width=1.5cm]{report_file/iiit manipur.png}
+\end{minipage}%
+\hfill
+\begin{minipage}[c]{0.85\textwidth}
+	\textbf{Department of Computer Science and Engineering}\\[3pt]
+	\textbf{Indian Institute of Information Technology Senapati, Manipur}
+\end{minipage}
+\par\vspace{0.3cm}
+\noindent\rule{\textwidth}{0.4pt}
+\vspace{0.3cm}
 	
 	\begin{flushleft}
 	Dr. Rajkumari Bidyalakshmi Devi \hfill Email: \href{mailto:bidyalakshmi@iiitmanipur.ac.in}{bidyalakshmi@iiitmanipur.ac.in}\\
-	Assistant Professor \hfill Contact No: +91-7005126046\\
+	Assistant Professor, CSE, IIIT Manipur \hfill Contact No: +91-7005126046\\
 	\end{flushleft}
 	
 	\vspace{0.6cm}
-	{\LARGE \textbf{\emph{To Whom It May Concern}}}\\[0.8cm]
-	\linespread{1.2}
-	\large{This is to certify that the internship report entitled \textbf{``OpsMind AI: Enterprise Standard Operating Procedure (SOP) Knowledge Assistant with Retrieval-Augmented Generation'',} submitted to the Department of Computer Science and Engineering, Indian Institute of Information Technology Senapati, Manipur in partial fulfillment for the award of degree of \textbf{Bachelor of Technology in Computer Science and Engineering} is a record of bonafide work carried out by \textbf{Krishna Anand} bearing roll number \textbf{230101082}.}\\[1.2cm]
+	\begin{center}
+		{\LARGE \textbf{\emph{To Whom It May Concern}}}
+	\end{center}
+	\vspace{0.8cm}
 	
+	\noindent{\linespread{1.2}\large This is to certify that the internship report entitled \textbf{``OpsMind AI: Enterprise Standard Operating Procedure (SOP) Knowledge Assistant with Retrieval-Augmented Generation'',} submitted to the Department of Computer Science and Engineering, Indian Institute of Information Technology Senapati, Manipur in partial fulfillment for the award of degree of \textbf{Bachelor of Technology in Computer Science and Engineering} is a record of bonafide work carried out by \textbf{Krishna Anand} bearing roll number \textbf{230101082}.\par}
+	
+	\vspace{1.0cm}
 	\begin{flushright}
-	\large{Signature of Faculty Advisor}\\[0.3cm]
+	\large Signature of Faculty Advisor\\[0.3cm]
 	\textbf{(Dr. Rajkumari Bidyalakshmi Devi)}\\[0.3cm]
 	\end{flushright}
-		
-\end{center}
 \vspace{0.4cm}
 \noindent Signature of the Examiner 1: ....................................................\\[0.5cm]
 \noindent Signature of the Examiner 2: ....................................................\\[0.5cm]
@@ -149,11 +154,8 @@ Date: \today
 
 \newpage
 \begin{abstract}
-In large-scale enterprise environments such as automated fulfillment centers, logistics hubs, and regulatory compliance units, Standard Operating Procedures (SOPs) are critical for ensuring operational fidelity, safety adherence, and procedural compliance. However, employees frequently encounter significant operational latency and cognitive friction when navigating multi-hundred-page technical PDF documentation. Traditional keyword-based retrieval methods (e.g., BM25) fail to resolve semantic paraphrasing and conceptual intent, while raw generative Large Language Models (LLMs) present substantial compliance risks due to their susceptibility to hallucinations and lack of verifiable provenance.
-
-To address these challenges, this report presents \textbf{OpsMind AI}, an enterprise-grade SOP Knowledge Assistant based on the paradigm of Retrieval-Augmented Generation (RAG). OpsMind AI automates the end-to-end ingestion and indexing of complex PDF manuals by executing text stream parsing, sliding-window chunk segmentation ($1,000$ characters with $100$ character overlap), domain section categorization, and in-process dense vector generation using the 384-dimensional \texttt{all-MiniLM-L6-v2} Transformer model. High-dimensional vector representations are indexed directly within MongoDB Atlas, enabling sub-second Approximate Nearest Neighbor (ANN) cosine similarity retrieval.
-
-Upon receiving a natural language query, the system retrieves the top-$k$ most relevant context segments, validates relevance against a strict similarity threshold ($\tau = 0.65$), and synthesizes a factually grounded response using Google Gemini 2.5 Flash. Every answer is coupled with granular source attribution—including document name, exact page number, section category, chunk index, and cosine similarity score—with interactive modal snippet verification. Empirical evaluation on an enterprise SOP manual of 46 pages and 205 indexed chunks demonstrated an end-to-end response time of $865\text{ ms}$, $100\%$ grounding accuracy on verified procedures, and zero hallucination on out-of-domain inquiries.
+\onehalfspacing
+In many companies, information is scattered across different documents and departments, making it hard for employees to find what they need quickly. During my internship, I worked on OpsMind AI, a tool that solves this problem. It is a web application built with React, Node.js, and MongoDB that lets users search through company documents using natural language. Under the hood, it uses Retrieval-Augmented Generation (RAG) by combining MongoDB Atlas Vector Search with the Gemini API. The system parses PDF documents, breaks them into chunks, and stores their vector embeddings. When a user asks a question, the application streams back a context-aware answer in real-time using Server-Sent Events (SSE). This project helped me learn how to build practical AI features into a full-stack application, ultimately making information retrieval much faster for corporate teams.
 \end{abstract}
 
 %----------------------------------------------------------------------------------------
@@ -173,10 +175,7 @@ I am also thankful to my peers, friends, and family for their unwavering encoura
 
 \vspace{2cm}
 \begin{flushright}
-Krishna Anand\\
-Roll No: 230101082\\
-Department of Computer Science and Engineering\\
-Indian Institute of Information Technology Senapati, Manipur
+Krishna Anand
 \end{flushright}
 
 %----------------------------------------------------------------------------------------
@@ -191,6 +190,11 @@ Indian Institute of Information Technology Senapati, Manipur
 %----------------------------------------------------------------------------------------
 % Main Chapters
 %----------------------------------------------------------------------------------------
+
+\newpage
+\onehalfspacing
+\spaceskip=4.5pt plus 2.2pt minus 1.4pt
+\xspaceskip=5.5pt plus 2.5pt minus 1.5pt
 
 \chapter{Introduction}
 \input{chapters/1_Introduction}
