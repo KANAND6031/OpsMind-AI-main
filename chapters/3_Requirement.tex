@@ -111,39 +111,98 @@ The development and execution environment specifications for OpsMind AI are deta
 }
 \end{table}
 
-\section{User Personas and Use Case Analysis}
+\section{Use Case Diagram}
 \label{sec:req_use_cases}
 
-To ensure complete alignment with enterprise workflows, OpsMind AI is designed around key user personas operating across different levels of the organizational hierarchy:
+The Use Case diagram illustrates the primary behavioral interactions between enterprise actors, the internal system boundaries of OpsMind AI, and supporting external cloud AI/database services.
 
+\subsection{Actors}
 \begin{itemize}
-    \item \textbf{Warehouse Floor Operator / Associate:} Requires rapid, unambiguous instructions regarding operational thresholds, such as package weight limits, damaged goods triage procedures, or trailer docking safety rules. Requires direct page references to resolve discrepancies on the floor.
-    \item \textbf{Operations and Shift Manager:} Queries governance hierarchies, approval chains, shift handover procedures, and emergency contingency protocols during active operational shifts.
-    \item \textbf{Quality Assurance and Compliance Auditor:} Audits standard operating procedures against live system outputs to ensure regulatory adherence and safety protocol compliance.
-    \item \textbf{System Administrator:} Responsible for onboarding new operational manuals, deprecating obsolete SOPs, inspecting chunk-level indexing statistics, and monitoring vector search performance.
+    \item \textbf{Employee / Operator:} End-users such as warehouse associates, operations leads, and shift managers who ask natural language questions regarding Standard Operating Procedures, view generated answers with granular source citations, and upload operational SOP documents.
+    \item \textbf{System Administrator:} Administrative personnel responsible for viewing the enterprise document repository and managing document lifecycles (deleting or re-indexing stored SOPs).
+    \item \textbf{Google Gemini (LLM API):} External large language model service that generates context-grounded natural language answers.
+    \item \textbf{MongoDB Atlas (Vector Database):} External managed cloud database providing persistent storage and approximate nearest neighbor vector similarity search.
 \end{itemize}
 
-Figure \ref{fig:use_case_flow} summarizes the primary interaction modalities between enterprise users and the OpsMind AI knowledge platform.
+\subsection{Use Case Model}
+Figure \ref{fig:use_case_diagram} depicts the UML Use Case diagram for OpsMind AI.
 
 \begin{figure}[H]
 \centering
-\begin{tikzpicture}[node distance=1.8cm, auto,
-    block/.style={rectangle, draw, fill=blue!10, text width=7cm, text centered, rounded corners, minimum height=1.2cm},
-    actor/.style={rectangle, draw, fill=green!15, text width=4cm, text centered, rounded corners, minimum height=1cm},
-    line/.style={draw, ->, thick}]
-    
-    \node [actor] (user) {Enterprise Operator / Manager};
-    \node [block, below of=user] (search) {Natural Language Query Formulation \& Vector Search};
-    \node [block, below of=search] (rag) {Grounded Answer Synthesis \& Source Attribution};
-    \node [actor, right of=user, node distance=7.5cm] (admin) {System Administrator};
-    \node [block, below of=admin] (upload) {SOP PDF Ingestion, Chunking \& Embedding};
-    \node [block, below of=upload] (manage) {Document Repository Audit \& Re-indexing};
-    
-    \path [line] (user) -- (search);
-    \path [line] (search) -- (rag);
-    \path [line] (admin) -- (upload);
-    \path [line] (upload) -- (manage);
+\resizebox{0.92\textwidth}{!}{
+\begin{tikzpicture}[
+    scale=1.0,
+    every node/.style={transform shape},
+    actor_blue/.style={
+        ellipse, draw=blue!70!black, fill=blue!15, very thick,
+        minimum width=3.4cm, minimum height=1.2cm,
+        align=center, font=\small\bfseries
+    },
+    actor_green/.style={
+        ellipse, draw=green!55!black, fill=green!20, very thick,
+        minimum width=3.4cm, minimum height=1.2cm,
+        align=center, font=\small\bfseries
+    },
+    usecase_blue/.style={
+        ellipse, draw=blue!70!black, fill=blue!12, very thick,
+        minimum width=4.4cm, minimum height=1.15cm,
+        align=center, font=\small\bfseries
+    },
+    usecase_green/.style={
+        ellipse, draw=green!55!black, fill=green!15, very thick,
+        minimum width=4.4cm, minimum height=1.15cm,
+        align=center, font=\small\bfseries
+    },
+    extsystem/.style={
+        rectangle, draw=red!60!black, fill=red!15, very thick,
+        rounded corners=8pt, minimum width=3.2cm, minimum height=1.4cm,
+        align=center, font=\small\bfseries
+    },
+    systembox/.style={
+        draw=black!85, ultra thick, rounded corners=12pt, fill=white
+    },
+    solidline/.style={
+        draw=black!85, thick
+    },
+    dashedarrow/.style={
+        draw=black!85, dashed, -{Latex[length=3mm, width=2mm]}, thick
+    }
+]
+
+    % System boundary box
+    \draw[systembox] (-2.8, -4.8) rectangle (5.2, 5.0);
+    \node[anchor=north, font=\Large\bfseries, text=black] at (1.2, 4.65) {OpsMind AI System};
+
+    % 5 Use Cases inside System Box (centered at x = 1.2)
+    \node[usecase_blue] (uc1) at (1.2, 3.2) {Ask SOP Questions};
+    \node[usecase_blue] (uc2) at (1.2, 1.6) {View Answer \&\\ Source Citations};
+    \node[usecase_blue] (uc3) at (1.2, 0.0) {Upload SOP Document};
+    \node[usecase_green] (uc4) at (1.2, -1.6) {View Document\\ Repository};
+    \node[usecase_green] (uc5) at (1.2, -3.2) {Delete / Re-index\\ Documents};
+
+    % External Systems on the Right
+    \node[extsystem] (gemini) at (8.0, 2.3) {Google Gemini\\ (LLM API)};
+    \node[extsystem] (mongo) at (8.0, -1.0) {MongoDB Atlas\\ (Vector Database)};
+
+    % Dashed connections to external systems
+    \draw[dashedarrow] (uc1.east) -- node[above=2pt, sloped, font=\footnotesize\bfseries, text=black] {Generate Answer} (gemini.west);
+    \draw[dashedarrow] (uc3.east) -- node[above=2pt, sloped, font=\footnotesize\bfseries, text=black, align=center] {Store \& Search\\ Embeddings} (mongo.west);
+
+    % Left Actors (Oval Shapes)
+    \node[actor_blue] (act1) at (-5.0, 2.4) {Employee /\\ Operator};
+    \node[actor_green] (act2) at (-5.0, -2.4) {System\\ Administrator};
+
+    % Solid lines from Actors to Use Cases
+    \draw[solidline] (act1.east) -- (uc1.west);
+    \draw[solidline] (act1.east) -- (uc2.west);
+    \draw[solidline] (act1.east) -- (uc3.west);
+
+    \draw[solidline] (act2.east) -- (uc4.west);
+    \draw[solidline] (act2.east) -- (uc5.west);
+
 \end{tikzpicture}
-\caption{Primary Use Case Flow for Operators and Administrators in OpsMind AI}
-\label{fig:use_case_flow}
+}
+\caption{UML Use Case Diagram of OpsMind AI}
+\label{fig:use_case_diagram}
 \end{figure}
+
