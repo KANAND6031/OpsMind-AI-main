@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.9.8)  15 SEP 2026 01:13
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.9.8)  15 SEP 2026 01:31
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1036,7 +1036,7 @@ Package hyperref Info: Link coloring ON on input line 33.
 <report_file/iiit manipur.png, id=230, 256.96pt x 197.73875pt>
 File: report_file/iiit manipur.png Graphic file (type png)
 <use report_file/iiit manipur.png>
-Package pdftex.def Info: report_file/iiit manipur.png  used on input line 66.
+Package pdftex.def Info: report_file/iiit manipur.png  used on input line 67.
 (pdftex.def)             Requested size: 128.0374pt x 98.52818pt.
  [1
 
@@ -1046,66 +1046,66 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.96 \newpage
+l.97 \newpage
               [1]
 File: report_file/iiit manipur.png Graphic file (type png)
 <use report_file/iiit manipur.png>
-Package pdftex.def Info: report_file/iiit manipur.png  used on input line 100.
+Package pdftex.def Info: report_file/iiit manipur.png  used on input line 101.
 (pdftex.def)             Requested size: 42.67912pt x 32.84273pt.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 101
+LaTeX Font Info:    Trying to load font information for U+msa on input line 102
 .
 
 (C:\Users\krish\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 101
+LaTeX Font Info:    Trying to load font information for U+msb on input line 102
 .
 
 (C:\Users\krish\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-Overfull \hbox (23.39595pt too wide) in paragraph at lines 122--122
+Overfull \hbox (23.39595pt too wide) in paragraph at lines 123--123
 \T1/cmr/bx/n/12 dard Op-er-at-ing Pro-ce-dure (SOP) Knowl-edge As-sis-tant with
  Retrieval-Augmented
  []
 
 [2]
-<report_file/internship_offer_letter_page1.jpg, id=254, 725.71124pt x 1027.84pt
+<report_file/internship_offer_letter_page1.jpg, id=255, 725.71124pt x 1027.84pt
 >
 File: report_file/internship_offer_letter_page1.jpg Graphic file (type jpg)
 <use report_file/internship_offer_letter_page1.jpg>
 Package pdftex.def Info: report_file/internship_offer_letter_page1.jpg  used on
- input line 145.
+ input line 146.
 (pdftex.def)             Requested size: 385.78784pt x 546.39938pt.
  [3 <./report_file/internship_offer_letter_page1.jpg>]
-<report_file/internship_offer_letter_page2.jpg, id=259, 725.71124pt x 1027.84pt
+<report_file/internship_offer_letter_page2.jpg, id=260, 725.71124pt x 1027.84pt
 >
 File: report_file/internship_offer_letter_page2.jpg Graphic file (type jpg)
 <use report_file/internship_offer_letter_page2.jpg>
 Package pdftex.def Info: report_file/internship_offer_letter_page2.jpg  used on
- input line 154.
+ input line 155.
 (pdftex.def)             Requested size: 385.78784pt x 546.39938pt.
  [4 <./report_file/internship_offer_letter_page2.jpg>]
-<report_file/internship_completion_certificate.jpg, id=264, 726.715pt x 1027.84
+<report_file/internship_completion_certificate.jpg, id=265, 726.715pt x 1027.84
 pt>
 File: report_file/internship_completion_certificate.jpg Graphic file (type jpg)
 
 <use report_file/internship_completion_certificate.jpg>
 Package pdftex.def Info: report_file/internship_completion_certificate.jpg  use
-d on input line 163.
+d on input line 164.
 (pdftex.def)             Requested size: 386.32143pt x 546.39938pt.
  [5 <./report_file/internship_completion_certificate.jpg>]
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.174 \end{abstract}
+l.175 \end{abstract}
                      [1]
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.200 \newpage
+l.201 \newpage
                [1] (report.toc
 pdfTeX warning (ext4): destination with the same identifier (name{page.2}) has 
 been already used, duplicate ignored
@@ -1123,7 +1123,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.3}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.202 \listoffigures
+l.203 \listoffigures
                      [3] (report.lof)
 \tf@lof=\write6
 \openout6 = `report.lof'.
@@ -1133,7 +1133,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.4}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.203 \listoftables
+l.204 \listoftables
                     [4
 
 ] (report.lot)
@@ -1145,7 +1145,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.5}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.209 \newpage
+l.210 \newpage
                [5
 
 ]
@@ -1225,7 +1225,7 @@ Overfull \hbox (71.27788pt too wide) in paragraph at lines 4--5
 /m/n/10.95 . 
  []
 
-<report_file/upload_dashboard.png, id=548, 1141.866pt x 525.162pt>
+<report_file/upload_dashboard.png, id=549, 1141.866pt x 525.162pt>
 File: report_file/upload_dashboard.png Graphic file (type png)
 <use report_file/upload_dashboard.png>
 Package pdftex.def Info: report_file/upload_dashboard.png  used on input line 3
@@ -1234,13 +1234,13 @@ Package pdftex.def Info: report_file/upload_dashboard.png  used on input line 3
 [26
 
 ]
-<report_file/chat_empty.png, id=556, 1138.85475pt x 546.843pt>
+<report_file/chat_empty.png, id=557, 1138.85475pt x 546.843pt>
 File: report_file/chat_empty.png Graphic file (type png)
 <use report_file/chat_empty.png>
 Package pdftex.def Info: report_file/chat_empty.png  used on input line 53.
 (pdftex.def)             Requested size: 430.31812pt x 206.62598pt.
  [27 <./report_file/upload_dashboard.png> <./report_file/chat_empty.png>]
-<report_file/chat_qa_citation.png, id=564, 1153.30875pt x 543.83176pt>
+<report_file/chat_qa_citation.png, id=565, 1153.30875pt x 543.83176pt>
 File: report_file/chat_qa_citation.png Graphic file (type png)
 <use report_file/chat_qa_citation.png>
 Package pdftex.def Info: report_file/chat_qa_citation.png  used on input line 6
@@ -1336,11 +1336,11 @@ Package rerunfilecheck Info: File `report.out' has not changed.
 (rerunfilecheck)             Checksum: 8B8509F9BFA7D771FFDD58B709745969;12130.
  ) 
 Here is how much of TeX's memory you used:
- 35986 strings out of 467871
- 847615 string characters out of 5418377
+ 35988 strings out of 467871
+ 847639 string characters out of 5418377
  1357045 words of memory out of 5000000
- 64071 multiletter control sequences out of 15000+600000
- 653045 words of font info for 89 fonts, out of 8000000 for 9000
+ 64072 multiletter control sequences out of 15000+600000
+ 653721 words of font info for 90 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  84i,14n,94p,1111b,1031s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\krish\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcti
@@ -1362,22 +1362,23 @@ Users\krish\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1200.pk
 \ecbx1095.pk> <C:\Users\krish\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/
 dpi600\ecxc1200.pk> <C:\Users\krish\AppData\Local\MiKTeX\fonts/pk/ljfour/jknapp
 en/ec/dpi600\ecxc1440.pk> <C:\Users\krish\AppData\Local\MiKTeX\fonts/pk/ljfour/
-jknappen/ec/dpi600\ecxc1728.pk> <C:\Users\krish\AppData\Local\MiKTeX\fonts/pk/l
-jfour/jknappen/ec/dpi600\ecrm1095.pk> <C:\Users\krish\AppData\Local\MiKTeX\font
-s/pk/ljfour/jknappen/ec/dpi600\ecbx1728.pk><C:/Users/krish/AppData/Local/Progra
-ms/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/krish/AppData/Loc
-al/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/krish/Ap
-pData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users
-/krish/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><
-C:/Users/krish/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr
-10.pfb><C:/Users/krish/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfont
-s/cm/cmr8.pfb><C:/Users/krish/AppData/Local/Programs/MiKTeX/fonts/type1/public/
-amsfonts/cm/cmsy10.pfb><C:/Users/krish/AppData/Local/Programs/MiKTeX/fonts/type
-1/public/amsfonts/cm/cmsy8.pfb><C:/Users/krish/AppData/Local/Programs/MiKTeX/fo
-nts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on report.pdf (40 pages, 1255500 bytes).
+jknappen/ec/dpi600\eccc1440.pk> <C:\Users\krish\AppData\Local\MiKTeX\fonts/pk/l
+jfour/jknappen/ec/dpi600\ecxc1728.pk> <C:\Users\krish\AppData\Local\MiKTeX\font
+s/pk/ljfour/jknappen/ec/dpi600\ecrm1095.pk> <C:\Users\krish\AppData\Local\MiKTe
+X\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1728.pk><C:/Users/krish/AppData/Local/
+Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/krish/AppDa
+ta/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/kr
+ish/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:
+/Users/krish/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8
+.pfb><C:/Users/krish/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/
+cm/cmr10.pfb><C:/Users/krish/AppData/Local/Programs/MiKTeX/fonts/type1/public/a
+msfonts/cm/cmr8.pfb><C:/Users/krish/AppData/Local/Programs/MiKTeX/fonts/type1/p
+ublic/amsfonts/cm/cmsy10.pfb><C:/Users/krish/AppData/Local/Programs/MiKTeX/font
+s/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/krish/AppData/Local/Programs/MiK
+TeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on report.pdf (40 pages, 1256394 bytes).
 PDF statistics:
- 1486 PDF objects out of 1728 (max. 8388607)
+ 1491 PDF objects out of 1728 (max. 8388607)
  178 named destinations out of 1000 (max. 500000)
  496 words of extra memory for PDF output out of 10000 (max. 10000000)
 
