@@ -179,23 +179,6 @@ If none of the predefined section patterns are detected in the chunk, the system
 
 This process allows the system to organize extracted SOP content according to operational domains, making the resulting chunks more meaningful for subsequent retrieval and question-answering operations.
 
-\section{Context Grounding and Prompt Engineering}
-\label{sec:design_prompts}
-
-To guarantee factual adherence, prompt assembly enforces strict boundaries around the Large Language Model. The constructed prompt format isolates external knowledge:
-
-\begin{equation}
-\text{Prompt} = \mathcal{T}_{\text{system}} \oplus \mathcal{C}_{\text{retrieved}} \oplus \mathcal{Q}_{\text{user}}
-\end{equation}
-
-where $\mathcal{T}_{\text{system}}$ specifies the behavioral rules:
-\begin{enumerate}
-    \item The model must act exclusively as an authorized enterprise SOP assistant.
-    \item The model is explicitly forbidden from utilizing external parametric knowledge or guessing.
-    \item The answer must be derived solely from the provided context block $\mathcal{C}_{\text{retrieved}}$.
-    \item If the factual answer is not explicitly stated within $\mathcal{C}_{\text{retrieved}}$, the model must reply with the exact string: \emph{``I don't know based on uploaded SOPs.''}
-\end{enumerate}
-
 \section{API Endpoint Structure}
 \label{sec:design_api_endpoints}
 
@@ -210,7 +193,7 @@ OpsMind AI exposes a structured RESTful application programming interface (API) 
 \hline
 \textbf{HTTP Method} & \textbf{Endpoint Route} & \textbf{Description and Functionality} \\ \hline
 \texttt{POST} & \texttt{/api/upload} & Ingests uploaded PDF manual, executes sequential text parsing, applies sliding-window chunking, computes dense embeddings, and stores records into MongoDB. \\ \hline
-\texttt{POST} & \texttt{/api/query} & Vectorizes user query, executes approximate nearest-neighbor search, applies confidence gating ($\tau \ge 0.65$), and streams LLM synthesis with source citations. \\ \hline
+\texttt{POST} & \texttt{/api/search} & Vectorizes user query, executes approximate nearest-neighbor search, applies confidence gating ($\tau \ge 0.65$), and streams LLM synthesis with source citations. \\ \hline
 \texttt{GET} & \texttt{/api/stats} & Returns platform analytics including total pages processed, total indexed chunks, embedding dimensions ($384$), and active generative model. \\ \hline
 \texttt{GET} & \texttt{/api/admin/files} & Retrieves inventory of all stored SOP documents with aggregated page numbers and total indexed chunk counts. \\ \hline
 \texttt{DELETE} & \texttt{/api/admin/file/:fileName} & Atomically purges all chunk records and vector embeddings associated with the target SOP document from the repository. \\ \hline
