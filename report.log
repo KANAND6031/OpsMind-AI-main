@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.9.8)  15 SEP 2026 16:06
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.9.8)  15 SEP 2026 16:39
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1033,7 +1033,7 @@ Package hyperref Info: Link coloring ON on input line 33.
 \@outlinefile=\write4
 \openout4 = `report.out'.
 
-<report_file/iiit manipur.png, id=258, 256.96pt x 197.73875pt>
+<report_file/iiit manipur.png, id=262, 256.96pt x 197.73875pt>
 File: report_file/iiit manipur.png Graphic file (type png)
 <use report_file/iiit manipur.png>
 Package pdftex.def Info: report_file/iiit manipur.png  used on input line 67.
@@ -1064,7 +1064,7 @@ Overfull \hbox (23.39595pt too wide) in paragraph at lines 128--128
  []
 
 [2]
-<report_file/internship_offer_letter_page1.jpg, id=285, 725.71124pt x 1027.84pt
+<report_file/internship_offer_letter_page1.jpg, id=289, 725.71124pt x 1027.84pt
 >
 File: report_file/internship_offer_letter_page1.jpg Graphic file (type jpg)
 <use report_file/internship_offer_letter_page1.jpg>
@@ -1072,7 +1072,7 @@ Package pdftex.def Info: report_file/internship_offer_letter_page1.jpg  used on
  input line 153.
 (pdftex.def)             Requested size: 385.78784pt x 546.39938pt.
  [3 <./report_file/internship_offer_letter_page1.jpg>]
-<report_file/internship_offer_letter_page2.jpg, id=290, 725.71124pt x 1027.84pt
+<report_file/internship_offer_letter_page2.jpg, id=294, 725.71124pt x 1027.84pt
 >
 File: report_file/internship_offer_letter_page2.jpg Graphic file (type jpg)
 <use report_file/internship_offer_letter_page2.jpg>
@@ -1080,7 +1080,7 @@ Package pdftex.def Info: report_file/internship_offer_letter_page2.jpg  used on
  input line 164.
 (pdftex.def)             Requested size: 385.78784pt x 546.39938pt.
  [4 <./report_file/internship_offer_letter_page2.jpg>]
-<report_file/internship_completion_certificate.jpg, id=295, 726.715pt x 1027.84
+<report_file/internship_completion_certificate.jpg, id=299, 726.715pt x 1027.84
 pt>
 File: report_file/internship_completion_certificate.jpg Graphic file (type jpg)
 
@@ -1165,13 +1165,13 @@ Overfull \hbox (3.22418pt too wide) in paragraph at lines 74--75
  []
 
 [13] [14]
-Underfull \hbox (badness 10000) in paragraph at lines 145--145
+Underfull \hbox (badness 10000) in paragraph at lines 241--241
 []|\T1/cmr/m/n/10.95 Native out-put di-men-sion of
  []
 
-[15] [16]) [17]
+[15] [16]) [17] [18]
 Chapter 5.
-(chapters/5_Implementation.tex [18
+(chapters/5_Implementation.tex [19
 
 ]
 LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <10.95> not available
@@ -1182,7 +1182,7 @@ Overfull \hbox (5.27281pt too wide) in paragraph at lines 31--32
 -a-tor (\T1/cmtt/m/n/10.95 $meta: "vectorSearchScore"\T1/cmr/m/n/10.95 ). 
  []
 
-[19] [20]) [21]
+[20] [21]) [22]
 Chapter 6.
 (chapters/6_Results.tex
 Overfull \hbox (71.27788pt too wide) in paragraph at lines 4--5
@@ -1191,22 +1191,22 @@ Overfull \hbox (71.27788pt too wide) in paragraph at lines 4--5
 /m/n/10.95 . 
  []
 
-<report_file/upload_dashboard.png, id=584, 1141.866pt x 525.162pt>
+<report_file/upload_dashboard.png, id=597, 1141.866pt x 525.162pt>
 File: report_file/upload_dashboard.png Graphic file (type png)
 <use report_file/upload_dashboard.png>
 Package pdftex.def Info: report_file/upload_dashboard.png  used on input line 3
 7.
 (pdftex.def)             Requested size: 430.31812pt x 197.91289pt.
-[22
+[23
 
 ]
-<report_file/chat_empty.png, id=592, 1138.85475pt x 546.843pt>
+<report_file/chat_empty.png, id=605, 1138.85475pt x 546.843pt>
 File: report_file/chat_empty.png Graphic file (type png)
 <use report_file/chat_empty.png>
 Package pdftex.def Info: report_file/chat_empty.png  used on input line 53.
 (pdftex.def)             Requested size: 430.31812pt x 206.62598pt.
- [23 <./report_file/upload_dashboard.png> <./report_file/chat_empty.png>]
-<report_file/chat_qa_citation.png, id=600, 1153.30875pt x 543.83176pt>
+ [24 <./report_file/upload_dashboard.png> <./report_file/chat_empty.png>]
+<report_file/chat_qa_citation.png, id=613, 1153.30875pt x 543.83176pt>
 File: report_file/chat_qa_citation.png Graphic file (type png)
 <use report_file/chat_qa_citation.png>
 Package pdftex.def Info: report_file/chat_qa_citation.png  used on input line 6
@@ -1287,11 +1287,11 @@ Underfull \hbox (badness 2662) in paragraph at lines 106--106
 []|\T1/cmr/bx/n/10.95 Passed \T1/cmr/m/n/10.95 (Gat-
  []
 
-[24 <./report_file/chat_qa_citation.png>]) [25]
+[25 <./report_file/chat_qa_citation.png>]) [26]
 Chapter 7.
-(chapters/7_Conclusion.tex [26
+(chapters/7_Conclusion.tex [27
 
-] [27]) (report.bbl [28]) [29
+] [28]) (report.bbl [29]) [30
 
 ] (report.aux)
  ***********
@@ -1299,53 +1299,54 @@ LaTeX2e <2025-11-01>
 L3 programming layer <2025-12-24>
  ***********
 Package rerunfilecheck Info: File `report.out' has not changed.
-(rerunfilecheck)             Checksum: E1C64610D1E9B5EB60C1D7298DD51396;12764.
+(rerunfilecheck)             Checksum: 15A8E916720C66C9901D68B6545DE4FA;12930.
  ) 
 Here is how much of TeX's memory you used:
- 35973 strings out of 467871
- 847274 string characters out of 5418377
- 1357169 words of memory out of 5000000
- 64056 multiletter control sequences out of 15000+600000
- 653721 words of font info for 90 fonts, out of 8000000 for 9000
+ 36012 strings out of 467871
+ 847970 string characters out of 5418377
+ 1357287 words of memory out of 5000000
+ 64088 multiletter control sequences out of 15000+600000
+ 655451 words of font info for 95 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  84i,14n,94p,1111b,1033s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\krish\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcti
 1095.pk> <C:\Users\krish\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi60
-0\ecrm1000.pk> <C:\Users\krish\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec
-/dpi600\ecbx0900.pk> <C:\Users\krish\AppData\Local\MiKTeX\fonts/pk/ljfour/jknap
-pen/ec/dpi600\ecbx1000.pk> <C:\Users\krish\AppData\Local\MiKTeX\fonts/pk/ljfour
-/jknappen/ec/dpi600\ectt1095.pk> <C:\Users\krish\AppData\Local\MiKTeX\fonts/pk/
-ljfour/jknappen/ec/dpi600\ecrm0800.pk> <C:\Users\krish\AppData\Local\MiKTeX\fon
-ts/pk/ljfour/jknappen/ec/dpi600\ecti1095.pk> <C:\Users\krish\AppData\Local\MiKT
-eX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1095.pk> <C:\Users\krish\AppData\Loca
-l\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1440.pk> <C:\Users\krish\AppDat
-a\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx2074.pk> <C:\Users\krish\
-AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx2488.pk> <C:\Users\
-krish\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1200.pk> <C:\
-Users\krish\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1200.pk
-> <C:\Users\krish\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbi1
-728.pk> <C:\Users\krish\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600
-\ecbx1095.pk> <C:\Users\krish\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/
-dpi600\ecxc1200.pk> <C:\Users\krish\AppData\Local\MiKTeX\fonts/pk/ljfour/jknapp
-en/ec/dpi600\ecxc1440.pk> <C:\Users\krish\AppData\Local\MiKTeX\fonts/pk/ljfour/
-jknappen/ec/dpi600\eccc1440.pk> <C:\Users\krish\AppData\Local\MiKTeX\fonts/pk/l
-jfour/jknappen/ec/dpi600\ecxc1728.pk> <C:\Users\krish\AppData\Local\MiKTeX\font
-s/pk/ljfour/jknappen/ec/dpi600\ecrm1095.pk> <C:\Users\krish\AppData\Local\MiKTe
-X\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1440.pk> <C:\Users\krish\AppData\Local
-\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1728.pk><C:/Users/krish/AppData/
-Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/krish
-/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Us
-ers/krish/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.p
-fb><C:/Users/krish/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm
-/cmmi8.pfb><C:/Users/krish/AppData/Local/Programs/MiKTeX/fonts/type1/public/ams
-fonts/cm/cmr10.pfb><C:/Users/krish/AppData/Local/Programs/MiKTeX/fonts/type1/pu
-blic/amsfonts/cm/cmr8.pfb><C:/Users/krish/AppData/Local/Programs/MiKTeX/fonts/t
-ype1/public/amsfonts/cm/cmsy10.pfb><C:/Users/krish/AppData/Local/Programs/MiKTe
-X/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/krish/AppData/Local/Progra
-ms/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on report.pdf (41 pages, 1262823 bytes).
+0\ecbx0800.pk> <C:\Users\krish\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec
+/dpi600\ecrm1000.pk> <C:\Users\krish\AppData\Local\MiKTeX\fonts/pk/ljfour/jknap
+pen/ec/dpi600\ecbx0900.pk> <C:\Users\krish\AppData\Local\MiKTeX\fonts/pk/ljfour
+/jknappen/ec/dpi600\ecbx1000.pk> <C:\Users\krish\AppData\Local\MiKTeX\fonts/pk/
+ljfour/jknappen/ec/dpi600\ectt1095.pk> <C:\Users\krish\AppData\Local\MiKTeX\fon
+ts/pk/ljfour/jknappen/ec/dpi600\ecrm0800.pk> <C:\Users\krish\AppData\Local\MiKT
+eX\fonts/pk/ljfour/jknappen/ec/dpi600\ecti1095.pk> <C:\Users\krish\AppData\Loca
+l\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1095.pk> <C:\Users\krish\AppDat
+a\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1440.pk> <C:\Users\krish\
+AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx2074.pk> <C:\Users\
+krish\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx2488.pk> <C:\
+Users\krish\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1200.pk
+> <C:\Users\krish\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1
+200.pk> <C:\Users\krish\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600
+\ecbi1728.pk> <C:\Users\krish\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/
+dpi600\ecbx1095.pk> <C:\Users\krish\AppData\Local\MiKTeX\fonts/pk/ljfour/jknapp
+en/ec/dpi600\ecxc1200.pk> <C:\Users\krish\AppData\Local\MiKTeX\fonts/pk/ljfour/
+jknappen/ec/dpi600\ecxc1440.pk> <C:\Users\krish\AppData\Local\MiKTeX\fonts/pk/l
+jfour/jknappen/ec/dpi600\eccc1440.pk> <C:\Users\krish\AppData\Local\MiKTeX\font
+s/pk/ljfour/jknappen/ec/dpi600\ecxc1728.pk> <C:\Users\krish\AppData\Local\MiKTe
+X\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1095.pk> <C:\Users\krish\AppData\Local
+\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1440.pk> <C:\Users\krish\AppData
+\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1728.pk><C:/Users/krish/Ap
+pData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users
+/krish/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb>
+<C:/Users/krish/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cm
+mi10.pfb><C:/Users/krish/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfo
+nts/cm/cmmi8.pfb><C:/Users/krish/AppData/Local/Programs/MiKTeX/fonts/type1/publ
+ic/amsfonts/cm/cmr10.pfb><C:/Users/krish/AppData/Local/Programs/MiKTeX/fonts/ty
+pe1/public/amsfonts/cm/cmr8.pfb><C:/Users/krish/AppData/Local/Programs/MiKTeX/f
+onts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/krish/AppData/Local/Programs
+/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/krish/AppData/Local/
+Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on report.pdf (42 pages, 1285323 bytes).
 PDF statistics:
- 1544 PDF objects out of 1728 (max. 8388607)
- 179 named destinations out of 1000 (max. 500000)
- 552 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1614 PDF objects out of 1728 (max. 8388607)
+ 182 named destinations out of 1000 (max. 500000)
+ 560 words of extra memory for PDF output out of 10000 (max. 10000000)
 

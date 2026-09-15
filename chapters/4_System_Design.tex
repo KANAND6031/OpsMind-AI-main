@@ -94,6 +94,102 @@ When an enterprise user submits an inquiry, the retrieval and answer generation 
     \item \textbf{Step 6 (Response and Citation Dispatch):} The synthesized answer, along with granular metadata for each supporting chunk (filename, page, section, chunk index, similarity score), is returned to the user interface.
 \end{enumerate}
 
+\section{UML Component Diagram}
+\label{sec:design_component_diagram}
+
+The UML Component Diagram illustrates the high-level component structure and interaction model of OpsMind AI. As shown in Figure \ref{fig:uml_component_diagram}, the system is organized around three primary architectural boundaries: the client-side \textbf{Frontend} (React + Vite), the core \textbf{Backend Server} (Node.js + Express), and external backing services comprising the \textbf{Google Gemini API} (LLM) and \textbf{MongoDB Atlas} (Vector Database). 
+
+The frontend initiates requests over HTTP/REST (JSON) and receives structured response payloads. The backend server coordinates document chunking and embedding operations, stores and retrieves vectors from MongoDB Atlas via approximate nearest-neighbor search, and dispatches retrieved context prompts to Google Gemini to generate factually grounded answers.
+
+\begin{figure}[H]
+\centering
+\resizebox{\textwidth}{!}{
+\begin{tikzpicture}[
+    scale=1.0,
+    every node/.style={transform shape},
+    comp_box/.style={
+        rectangle, draw=black, fill=gray!8, very thick, rounded corners=6pt,
+        align=center, font=\normalsize
+    },
+    line_solid/.style={
+        draw=black, -{Latex[length=3mm, width=2mm]}, thick
+    },
+    line_dashed/.style={
+        draw=black, -{Latex[length=3mm, width=2mm]}, thick, dashed
+    },
+    msg_label/.style={
+        font=\scriptsize\bfseries, text=black, align=center
+    }
+]
+
+    % Component: Frontend (Left)
+    \node[comp_box, minimum width=3.6cm, minimum height=3.0cm] (frontend) at (-7.2, 0) {
+        {\scriptsize $\ll$component$\gg$}\\[3pt]
+        \textbf{\large Frontend}\\[3pt]
+        {\small (React + Vite)}
+    };
+    % UML Component Icon on Frontend (top-right corner)
+    \draw[thick, fill=white] ([xshift=-16pt, yshift=-16pt]frontend.north east) rectangle ++(11pt, 13pt);
+    \draw[thick, fill=white] ([xshift=-19pt, yshift=-8pt]frontend.north east) rectangle ++(5pt, 3pt);
+    \draw[thick, fill=white] ([xshift=-19pt, yshift=-14pt]frontend.north east) rectangle ++(5pt, 3pt);
+
+    % Component: Backend Server (Center)
+    \node[comp_box, minimum width=4.6cm, minimum height=6.2cm] (backend) at (0, 0) {
+        {\scriptsize $\ll$component$\gg$}\\[4pt]
+        \textbf{\Large Backend Server}\\[4pt]
+        {\small (Node.js + Express)}
+    };
+    % UML Component Icon on Backend Server
+    \draw[thick, fill=white] ([xshift=-16pt, yshift=-16pt]backend.north east) rectangle ++(11pt, 13pt);
+    \draw[thick, fill=white] ([xshift=-19pt, yshift=-8pt]backend.north east) rectangle ++(5pt, 3pt);
+    \draw[thick, fill=white] ([xshift=-19pt, yshift=-14pt]backend.north east) rectangle ++(5pt, 3pt);
+
+    % Component: Google Gemini API (Top Right)
+    \node[comp_box, minimum width=4.6cm, minimum height=2.4cm] (gemini) at (7.4, 2.0) {
+        {\scriptsize $\ll$external$\gg$}\\[3pt]
+        \textbf{\large Google Gemini API}\\[3pt]
+        {\small (LLM)}
+    };
+    % UML Component Icon on Gemini
+    \draw[thick, fill=white] ([xshift=-16pt, yshift=-16pt]gemini.north east) rectangle ++(11pt, 13pt);
+    \draw[thick, fill=white] ([xshift=-19pt, yshift=-8pt]gemini.north east) rectangle ++(5pt, 3pt);
+    \draw[thick, fill=white] ([xshift=-19pt, yshift=-14pt]gemini.north east) rectangle ++(5pt, 3pt);
+
+    % Component: MongoDB Atlas (Bottom Right)
+    \node[comp_box, minimum width=4.6cm, minimum height=2.4cm] (mongo) at (7.4, -2.0) {
+        {\scriptsize $\ll$database$\gg$}\\[3pt]
+        \textbf{\large MongoDB Atlas}\\[3pt]
+        {\small (Vector Database)}
+    };
+    % UML Component Icon on MongoDB
+    \draw[thick, fill=white] ([xshift=-16pt, yshift=-16pt]mongo.north east) rectangle ++(11pt, 13pt);
+    \draw[thick, fill=white] ([xshift=-19pt, yshift=-8pt]mongo.north east) rectangle ++(5pt, 3pt);
+    \draw[thick, fill=white] ([xshift=-19pt, yshift=-14pt]mongo.north east) rectangle ++(5pt, 3pt);
+
+    % -------------------------------------------------------------
+    % ARROWS: Frontend <--> Backend Server
+    % -------------------------------------------------------------
+    \draw[line_solid] ([yshift=16pt]frontend.east) -- node[above=2pt, msg_label] {HTTP / REST\\[1pt](JSON)} ([yshift=16pt]backend.west);
+    \draw[line_dashed] ([yshift=-16pt]backend.west) -- node[below=2pt, msg_label] {Response\\[1pt](JSON)} ([yshift=-16pt]frontend.east);
+
+    % -------------------------------------------------------------
+    % ARROWS: Backend Server <--> Google Gemini API
+    % -------------------------------------------------------------
+    \draw[line_dashed] ([yshift=14pt]backend.east |- gemini.west) -- node[above=2pt, msg_label] {Prompt +\\[1pt]Retrieved Context} ([yshift=14pt]gemini.west);
+    \draw[line_dashed] ([yshift=-14pt]gemini.west) -- node[below=2pt, msg_label] {Generated Answer} ([yshift=-14pt]backend.east |- gemini.west);
+
+    % -------------------------------------------------------------
+    % ARROWS: Backend Server <--> MongoDB Atlas
+    % -------------------------------------------------------------
+    \draw[line_dashed] ([yshift=14pt]backend.east |- mongo.west) -- node[above=2pt, msg_label] {Store / Search\\[1pt]Embeddings} ([yshift=14pt]mongo.west);
+    \draw[line_dashed] ([yshift=-14pt]mongo.west) -- node[below=2pt, msg_label] {Relevant Chunks} ([yshift=-14pt]backend.east |- mongo.west);
+
+\end{tikzpicture}
+}
+\caption{UML Component Diagram of OpsMind AI}
+\label{fig:uml_component_diagram}
+\end{figure}
+
 \section{Database Schema and Vector Index Design}
 \label{sec:design_db_schema}
 
