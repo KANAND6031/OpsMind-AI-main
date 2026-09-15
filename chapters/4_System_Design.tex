@@ -16,10 +16,10 @@ Figure \ref{fig:arch_diagram} illustrates the comprehensive architectural topolo
 \centering
 \resizebox{0.95\textwidth}{!}{
 \begin{tikzpicture}[
-    comp/.style={rectangle, draw=blue!80!purple, fill=blue!12, text centered, rounded corners=4pt, minimum height=1.1cm, minimum width=4.0cm, text width=3.8cm, font=\small},
-    layer_box/.style={rectangle, draw=blue!70, fill=blue!4, thick, rounded corners=6pt, inner sep=12pt},
+    comp/.style={rectangle, draw=black, fill=gray!12, text=black, text centered, rounded corners=4pt, minimum height=1.1cm, minimum width=4.0cm, text width=3.8cm, font=\small},
+    layer_box/.style={rectangle, draw=black, fill=gray!3, thick, rounded corners=6pt, inner sep=12pt},
     layer_title/.style={font=\bfseries\large, text=black, anchor=west},
-    line/.style={draw=blue!80!black, ->, ultra thick, >=stealth}
+    line/.style={draw=black, ->, ultra thick, >=stealth}
 ]
 
     % Row 1: Presentation Layer Components
@@ -56,8 +56,8 @@ Figure \ref{fig:arch_diagram} illustrates the comprehensive architectural topolo
     \end{scope}
 
     % Connecting Arrows with Large Gap and Clear Labels
-    \path [line] (pres_layer.south) -- node [right=10pt, font=\normalsize\bfseries, text=blue!80!black] {REST / JSON (Axios)} (app_layer.north);
-    \path [line] (app_layer.south) -- node [right=10pt, font=\normalsize\bfseries, text=blue!80!black] {Embeddings, Aggregation \& Prompts} (infer_layer.north);
+    \path [line] (pres_layer.south) -- node [right=10pt, font=\normalsize\bfseries, text=black] {REST / JSON (Axios)} (app_layer.north);
+    \path [line] (app_layer.south) -- node [right=10pt, font=\normalsize\bfseries, text=black] {Embeddings, Aggregation \& Prompts} (infer_layer.north);
 
 \end{tikzpicture}
 }

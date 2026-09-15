@@ -133,39 +133,29 @@ Figure \ref{fig:use_case_diagram} depicts the UML Use Case diagram for OpsMind A
 \begin{tikzpicture}[
     scale=1.0,
     every node/.style={transform shape},
-    actor_blue/.style={
-        ellipse, draw=blue!70!black, fill=blue!15, very thick,
+    actor/.style={
+        ellipse, draw=black, fill=gray!18, very thick,
         minimum width=3.4cm, minimum height=1.2cm,
-        align=center, font=\small\bfseries
+        align=center, font=\small\bfseries, text=black
     },
-    actor_green/.style={
-        ellipse, draw=green!55!black, fill=green!20, very thick,
-        minimum width=3.4cm, minimum height=1.2cm,
-        align=center, font=\small\bfseries
-    },
-    usecase_blue/.style={
-        ellipse, draw=blue!70!black, fill=blue!12, very thick,
+    usecase/.style={
+        ellipse, draw=black, fill=gray!8, very thick,
         minimum width=4.4cm, minimum height=1.15cm,
-        align=center, font=\small\bfseries
-    },
-    usecase_green/.style={
-        ellipse, draw=green!55!black, fill=green!15, very thick,
-        minimum width=4.4cm, minimum height=1.15cm,
-        align=center, font=\small\bfseries
+        align=center, font=\small\bfseries, text=black
     },
     extsystem/.style={
-        rectangle, draw=red!60!black, fill=red!15, very thick,
+        rectangle, draw=black, fill=gray!18, very thick,
         rounded corners=8pt, minimum width=3.2cm, minimum height=1.4cm,
-        align=center, font=\small\bfseries
+        align=center, font=\small\bfseries, text=black
     },
     systembox/.style={
-        draw=black!85, ultra thick, rounded corners=12pt, fill=white
+        draw=black, ultra thick, rounded corners=12pt, fill=white
     },
     solidline/.style={
-        draw=black!85, thick
+        draw=black, thick
     },
     dashedarrow/.style={
-        draw=black!85, dashed, -{Latex[length=3mm, width=2mm]}, thick
+        draw=black, dashed, -{Latex[length=3mm, width=2mm]}, thick
     }
 ]
 
@@ -174,11 +164,11 @@ Figure \ref{fig:use_case_diagram} depicts the UML Use Case diagram for OpsMind A
     \node[anchor=north, font=\Large\bfseries, text=black] at (1.2, 4.65) {OpsMind AI System};
 
     % 5 Use Cases inside System Box (centered at x = 1.2)
-    \node[usecase_blue] (uc1) at (1.2, 3.2) {Ask SOP Questions};
-    \node[usecase_blue] (uc2) at (1.2, 1.6) {View Answer \&\\ Source Citations};
-    \node[usecase_blue] (uc3) at (1.2, 0.0) {Upload SOP Document};
-    \node[usecase_green] (uc4) at (1.2, -1.6) {View Document\\ Repository};
-    \node[usecase_green] (uc5) at (1.2, -3.2) {Delete / Re-index\\ Documents};
+    \node[usecase] (uc1) at (1.2, 3.2) {Ask SOP Questions};
+    \node[usecase] (uc2) at (1.2, 1.6) {View Answer \&\\ Source Citations};
+    \node[usecase] (uc3) at (1.2, 0.0) {Upload SOP Document};
+    \node[usecase] (uc4) at (1.2, -1.6) {View Document\\ Repository};
+    \node[usecase] (uc5) at (1.2, -3.2) {Delete / Re-index\\ Documents};
 
     % External Systems on the Right
     \node[extsystem] (gemini) at (8.0, 2.3) {Google Gemini\\ (LLM API)};
@@ -189,8 +179,8 @@ Figure \ref{fig:use_case_diagram} depicts the UML Use Case diagram for OpsMind A
     \draw[dashedarrow] (uc3.east) -- node[above=2pt, sloped, font=\footnotesize\bfseries, text=black, align=center] {Store \& Search\\ Embeddings} (mongo.west);
 
     % Left Actors (Oval Shapes)
-    \node[actor_blue] (act1) at (-5.0, 2.4) {Employee /\\ Operator};
-    \node[actor_green] (act2) at (-5.0, -2.4) {System\\ Administrator};
+    \node[actor] (act1) at (-5.0, 2.4) {Employee /\\ Operator};
+    \node[actor] (act2) at (-5.0, -2.4) {System\\ Administrator};
 
     % Solid lines from Actors to Use Cases
     \draw[solidline] (act1.east) -- (uc1.west);
