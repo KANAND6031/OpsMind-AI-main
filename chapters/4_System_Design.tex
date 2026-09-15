@@ -195,3 +195,26 @@ where $\mathcal{T}_{\text{system}}$ specifies the behavioral rules:
     \item The answer must be derived solely from the provided context block $\mathcal{C}_{\text{retrieved}}$.
     \item If the factual answer is not explicitly stated within $\mathcal{C}_{\text{retrieved}}$, the model must reply with the exact string: \emph{``I don't know based on uploaded SOPs.''}
 \end{enumerate}
+
+\section{API Endpoint Structure}
+\label{sec:design_api_endpoints}
+
+OpsMind AI exposes a structured RESTful application programming interface (API) that coordinates client interactions, asynchronous document ingestion pipelines, vector similarity searches, and administrative repository maintenance. Table \ref{tab:api_endpoint_structure} summarizes the complete specification of the system's API endpoints, including HTTP methods, URI paths, and functional descriptions.
+
+\begin{table}[H]
+\centering
+\caption{OpsMind AI RESTful API Endpoint Specifications}
+\label{tab:api_endpoint_structure}
+\resizebox{\textwidth}{!}{
+\begin{tabular}{|l|l|p{9.5cm}|}
+\hline
+\textbf{HTTP Method} & \textbf{Endpoint Route} & \textbf{Description and Functionality} \\ \hline
+\texttt{POST} & \texttt{/api/upload} & Ingests uploaded PDF manual, executes sequential text parsing, applies sliding-window chunking, computes dense embeddings, and stores records into MongoDB. \\ \hline
+\texttt{POST} & \texttt{/api/query} & Vectorizes user query, executes approximate nearest-neighbor search, applies confidence gating ($\tau \ge 0.65$), and streams LLM synthesis with source citations. \\ \hline
+\texttt{GET} & \texttt{/api/stats} & Returns platform analytics including total pages processed, total indexed chunks, embedding dimensions ($384$), and active generative model. \\ \hline
+\texttt{GET} & \texttt{/api/admin/files} & Retrieves inventory of all stored SOP documents with aggregated page numbers and total indexed chunk counts. \\ \hline
+\texttt{DELETE} & \texttt{/api/admin/file/:fileName} & Atomically purges all chunk records and vector embeddings associated with the target SOP document from the repository. \\ \hline
+\texttt{POST} & \texttt{/api/admin/reindex/:fileName} & Triggers batch reprocessing, text segmentation, and neural re-embedding generation for the specified document collection. \\ \hline
+\end{tabular}
+}
+\end{table}
