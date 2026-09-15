@@ -44,7 +44,7 @@
 \contentsline {subsection}{\numberline {5.1.1}PDF Text Stream Ingestion}{18}{subsection.5.1.1}%
 \contentsline {subsection}{\numberline {5.1.2}Sliding-Window Text Segmentation}{18}{subsection.5.1.2}%
 \contentsline {section}{\numberline {5.2}Vector Search Pipeline and Aggregation Engine}{19}{section.5.2}%
-\contentsline {subsection}{\numberline {5.2.1}Confidence Thresholding and Gating Logic}{19}{subsection.5.2.1}%
+\contentsline {subsection}{\numberline {5.2.1}Retrieval Relevance and Fallback Logic}{19}{subsection.5.2.1}%
 \contentsline {section}{\numberline {5.3}Large Language Model Integration}{19}{section.5.3}%
 \contentsline {section}{\numberline {5.4}Administrative Management Subsystem}{19}{section.5.4}%
 \contentsline {section}{\numberline {5.5}Frontend Architecture and Component Engineering}{20}{section.5.5}%

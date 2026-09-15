@@ -31,8 +31,9 @@ Retrieval execution in OpsMind AI is conducted via MongoDB Atlas Vector Search. 
     \item \textbf{Projection Stage (\texttt{\$project}):} Extracts document metadata (filename, storage path, page number, section category, chunk index, text body) and captures the computed cosine similarity score via the metadata projection operator (\texttt{\$meta: "vectorSearchScore"}).
 \end{itemize}
 
-\subsection{Confidence Thresholding and Gating Logic}
-To eliminate spurious matches and guard against answering out-of-domain queries, the search route inspects the top similarity score ($s_{\max} = \text{Score}_1$). If $s_{\max} < 0.65$ or if zero matches are returned by the aggregation pipeline, the system bypasses LLM inference entirely, instantly returning the fallback refusal string to minimize response latency and cloud API costs.
+\subsection{Retrieval Relevance and Fallback Logic}
+\label{sec:impl_fallback_logic}
+The system retrieves the most relevant chunks using MongoDB Atlas Vector Search. If vector retrieval is unavailable or does not return usable results, a fallback similarity search can be used to identify relevant chunks from the stored embeddings. This improves robustness for small document collections and reduces dependency on a single retrieval mechanism.
 
 \section{Large Language Model Integration}
 \label{sec:impl_llm_integration}
@@ -74,6 +75,6 @@ To ensure enterprise robustness, OpsMind AI incorporates comprehensive exception
 \begin{itemize}
     \item \textbf{Duplicate File Ingestion:} When an existing manual is re-uploaded, all previous chunks associated with that filename are deleted atomically prior to new chunk insertion, preventing duplicate search results.
     \item \textbf{Corrupted PDF Ingestion:} If a PDF contains invalid xref tables or unreadable streams, the parsing stage traps the error and returns a 500 error code with a descriptive diagnostic message.
-    \item \textbf{Low-Confidence and Out-of-Scope Queries:} Handled deterministically at the vector retrieval stage by evaluating $s_{\max} < 0.65$, preventing irrelevant queries from reaching the LLM.
+    \item \textbf{Low-Relevance and Out-of-Scope Queries:} The retrieval pipeline evaluates the relevance of retrieved document chunks before generating an answer. When relevant SOP information cannot be identified, the system returns an explicit response indicating that the requested information is not available in the uploaded SOP documents.
     \item \textbf{Network and API Timeouts:} The frontend captures Axios network failures and displays user-friendly error banners without crashing the application state.
 \end{itemize}
