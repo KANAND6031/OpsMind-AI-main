@@ -58,12 +58,12 @@ OpsMind AI provides a dedicated administrative API suite for repository lifecycl
 The client-side interface of OpsMind AI is built as a modular Single Page Application (SPA) with React.js and Vite. The frontend architecture includes several purpose-built components:
 
 \begin{itemize}
-    \item \textbf{Sidebar Component (\texttt{Sidebar.jsx}):} Manages top-level application navigation across Chat, Upload, and Admin views, while featuring dark/light theme controls and persistent status indicators.
-    \item \textbf{Conversational Assistant View (\texttt{ChatSection.jsx}):} Renders conversational message threads, auto-scrolls to latest responses, handles keyboard submission events, displays animated loading indicators during inference, and renders structured citation cards for retrieved sources.
-    \item \textbf{SOP Upload and Progress View (\texttt{UploadSection.jsx}):} Provides multi-part file selection, tracks active upload percentage via Axios upload progress events, and renders the document statistics panel.
-    \item \textbf{Statistics Bar Component (\texttt{StatsBar.jsx}):} Renders four key metric widgets: Total Pages Processed, Total Chunks Indexed, Embedding Dimensions ($384$), and Active AI Model Name (Gemini 2.5 Flash).
-    \item \textbf{Source Citation Modal (\texttt{PDFModal.jsx}):} A modal dialog that renders when a user clicks on any citation card, presenting the exact section title, page number, and full text snippet for verification.
-    \item \textbf{Admin Management Dashboard (\texttt{AdminPage.jsx}):} Displays an administrative data table listing all stored SOP manuals, total pages, total chunks, and interactive buttons for document deletion and re-indexing.
+    \item \textbf{Sidebar Component:} Manages top-level application navigation across Chat, Upload, and Admin views, while featuring dark/light theme controls and persistent status indicators.
+    \item \textbf{Conversational Assistant View:} Renders conversational message threads, auto-scrolls to latest responses, handles keyboard submission events, displays animated loading indicators during inference, and renders structured citation cards for retrieved sources.
+    \item \textbf{SOP Upload and Progress View:} Provides multi-part file selection, tracks active upload percentage via Axios upload progress events, and renders the document statistics panel.
+    \item \textbf{Statistics Bar Component:} Renders four key metric widgets: Total Pages Processed, Total Chunks Indexed, Embedding Dimensions ($384$), and Active AI Model Name (Gemini 2.5 Flash).
+    \item \textbf{Source Citation Modal:} A modal dialog that renders when a user clicks on any citation card, presenting the exact section title, page number, and full text snippet for verification.
+    \item \textbf{Admin Management Dashboard:} Displays an administrative data table listing all stored SOP manuals, total pages, total chunks, and interactive buttons for document deletion and re-indexing.
 \end{itemize}
 
 \section{Error Handling and System Edge Cases}

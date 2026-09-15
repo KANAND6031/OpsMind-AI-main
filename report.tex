@@ -76,6 +76,10 @@
 %----------------------------------------------------------------------------------------
 
 \newpage
+\pagenumbering{roman}
+\setcounter{page}{1}
+\phantomsection
+\addcontentsline{toc}{chapter}{Declaration}
 \begin{center}
    { \LARGE \textbf{Declaration}}
 \end{center}
@@ -95,7 +99,8 @@ KRISHNA ANAND \\
 %----------------------------------------------------------------------------------------
 
 \newpage
-\thispagestyle{empty}
+\phantomsection
+\addcontentsline{toc}{chapter}{Certificate}
 \noindent
 \begin{minipage}[c]{0.13\textwidth}
 	\includegraphics[width=1.5cm]{report_file/iiit manipur.png}
@@ -138,6 +143,8 @@ KRISHNA ANAND \\
 %----------------------------------------------------------------------------------------
 
 \newpage
+\phantomsection
+\addcontentsline{toc}{chapter}{Offer Letter (Page 1)}
 \begin{center}
     {\LARGE \textbf{Offer Letter}}
     
@@ -147,6 +154,8 @@ KRISHNA ANAND \\
 \end{center}
 
 \newpage
+\phantomsection
+\addcontentsline{toc}{chapter}{Offer Letter (Page 2)}
 \begin{center}
     {\LARGE \textbf{Offer Letter}}
     
@@ -156,6 +165,8 @@ KRISHNA ANAND \\
 \end{center}
 
 \newpage
+\phantomsection
+\addcontentsline{toc}{chapter}{Completion Certificate}
 \begin{center}
     {\LARGE \textbf{Completion Certificate}}
     
@@ -169,16 +180,22 @@ KRISHNA ANAND \\
 %----------------------------------------------------------------------------------------
 
 \newpage
-\begin{abstract}
-\onehalfspacing
-In many companies, information is scattered across different documents and departments, making it hard for employees to find what they need quickly. During my internship, I worked on OpsMind AI, a tool that solves this problem. It is a web application built with React, Node.js, and MongoDB that lets users search through company documents using natural language. Under the hood, it uses Retrieval-Augmented Generation (RAG) by combining MongoDB Atlas Vector Search with the Gemini API. The system parses PDF documents, breaks them into chunks, and stores their vector embeddings. When a user asks a question, the application streams back a context-aware answer in real-time using Server-Sent Events (SSE). This project helped me learn how to build practical AI features into a full-stack application, ultimately making information retrieval much faster for corporate teams.
-\end{abstract}
+\phantomsection
+\addcontentsline{toc}{chapter}{Abstract}
+\begin{center}
+    {\LARGE \textbf{Abstract}}
+\end{center}
+\vspace{1.0cm}
+{\onehalfspacing
+In many companies, information is scattered across different documents and departments, making it hard for employees to find what they need quickly. During my internship, I worked on OpsMind AI, a tool that solves this problem. It is a web application built with React, Node.js, and MongoDB that lets users search through company documents using natural language. Under the hood, it uses Retrieval-Augmented Generation (RAG) by combining MongoDB Atlas Vector Search with the Gemini API. The system parses PDF documents, breaks them into chunks, and stores their vector embeddings. When a user asks a question, the application streams back a context-aware answer in real-time using Server-Sent Events (SSE). This project helped me learn how to build practical AI features into a full-stack application, ultimately making information retrieval much faster for corporate teams.\par}
 
 %----------------------------------------------------------------------------------------
 % Acknowledgement
 %----------------------------------------------------------------------------------------
 
 \newpage
+\phantomsection
+\addcontentsline{toc}{chapter}{Acknowledgement}
 \begin{center}
     { \LARGE \textbf{Acknowledgement}}
 \end{center}
@@ -208,6 +225,8 @@ Krishna Anand
 %----------------------------------------------------------------------------------------
 
 \newpage
+\pagenumbering{arabic}
+\setcounter{page}{1}
 \onehalfspacing
 \spaceskip=4.5pt plus 2.2pt minus 1.4pt
 \xspaceskip=5.5pt plus 2.5pt minus 1.5pt

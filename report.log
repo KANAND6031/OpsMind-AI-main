@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.9.8)  15 SEP 2026 01:39
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.9.8)  15 SEP 2026 15:00
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1033,7 +1033,7 @@ Package hyperref Info: Link coloring ON on input line 33.
 \@outlinefile=\write4
 \openout4 = `report.out'.
 
-<report_file/iiit manipur.png, id=230, 256.96pt x 197.73875pt>
+<report_file/iiit manipur.png, id=258, 256.96pt x 197.73875pt>
 File: report_file/iiit manipur.png Graphic file (type png)
 <use report_file/iiit manipur.png>
 Package pdftex.def Info: report_file/iiit manipur.png  used on input line 67.
@@ -1041,116 +1041,82 @@ Package pdftex.def Info: report_file/iiit manipur.png  used on input line 67.
  [1
 
 {C:/Users/krish/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map} <./report_fil
-e/iiit manipur.png>]
-pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
-been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.97 \newpage
-              [1]
+e/iiit manipur.png>] [1]
 File: report_file/iiit manipur.png Graphic file (type png)
 <use report_file/iiit manipur.png>
-Package pdftex.def Info: report_file/iiit manipur.png  used on input line 101.
+Package pdftex.def Info: report_file/iiit manipur.png  used on input line 106.
 (pdftex.def)             Requested size: 42.67912pt x 32.84273pt.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 102
+LaTeX Font Info:    Trying to load font information for U+msa on input line 107
 .
 
 (C:\Users\krish\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 102
+LaTeX Font Info:    Trying to load font information for U+msb on input line 107
 .
 
 (C:\Users\krish\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-Overfull \hbox (23.39595pt too wide) in paragraph at lines 123--123
+Overfull \hbox (23.39595pt too wide) in paragraph at lines 128--128
 \T1/cmr/bx/n/12 dard Op-er-at-ing Pro-ce-dure (SOP) Knowl-edge As-sis-tant with
  Retrieval-Augmented
  []
 
 [2]
-<report_file/internship_offer_letter_page1.jpg, id=256, 725.71124pt x 1027.84pt
+<report_file/internship_offer_letter_page1.jpg, id=285, 725.71124pt x 1027.84pt
 >
 File: report_file/internship_offer_letter_page1.jpg Graphic file (type jpg)
 <use report_file/internship_offer_letter_page1.jpg>
 Package pdftex.def Info: report_file/internship_offer_letter_page1.jpg  used on
- input line 146.
+ input line 153.
 (pdftex.def)             Requested size: 385.78784pt x 546.39938pt.
  [3 <./report_file/internship_offer_letter_page1.jpg>]
-<report_file/internship_offer_letter_page2.jpg, id=261, 725.71124pt x 1027.84pt
+<report_file/internship_offer_letter_page2.jpg, id=290, 725.71124pt x 1027.84pt
 >
 File: report_file/internship_offer_letter_page2.jpg Graphic file (type jpg)
 <use report_file/internship_offer_letter_page2.jpg>
 Package pdftex.def Info: report_file/internship_offer_letter_page2.jpg  used on
- input line 155.
+ input line 164.
 (pdftex.def)             Requested size: 385.78784pt x 546.39938pt.
  [4 <./report_file/internship_offer_letter_page2.jpg>]
-<report_file/internship_completion_certificate.jpg, id=266, 726.715pt x 1027.84
+<report_file/internship_completion_certificate.jpg, id=295, 726.715pt x 1027.84
 pt>
 File: report_file/internship_completion_certificate.jpg Graphic file (type jpg)
 
 <use report_file/internship_completion_certificate.jpg>
 Package pdftex.def Info: report_file/internship_completion_certificate.jpg  use
-d on input line 164.
+d on input line 175.
 (pdftex.def)             Requested size: 386.32143pt x 546.39938pt.
- [5 <./report_file/internship_completion_certificate.jpg>]
-pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
-been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.175 \end{abstract}
-                     [1]
-pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
-been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.201 \newpage
-               [1] (report.toc
-pdfTeX warning (ext4): destination with the same identifier (name{page.2}) has 
-been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.38 ...w Text Segmentation}{22}{subsection.5.1.2}
-                                                  % [2
+ [5 <./report_file/internship_completion_certificate.jpg>] [6] [7] (report.toc 
+[8
 
 ])
 \tf@toc=\write5
 \openout5 = `report.toc'.
 
-
-pdfTeX warning (ext4): destination with the same identifier (name{page.3}) has 
-been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.203 \listoffigures
-                     [3] (report.lof)
+ [9] (report.lof)
 \tf@lof=\write6
 \openout6 = `report.lof'.
 
-
-pdfTeX warning (ext4): destination with the same identifier (name{page.4}) has 
-been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.204 \listoftables
-                    [4
+ [10
 
 ] (report.lot)
 \tf@lot=\write7
 \openout7 = `report.lot'.
 
 
-pdfTeX warning (ext4): destination with the same identifier (name{page.5}) has 
-been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.210 \newpage
-               [5
+[11
 
 ]
 Chapter 1.
-(chapters/1_Introduction.tex [6
+(chapters/1_Introduction.tex
+pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
+been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.17 
+      [1
 
 ]
 Overfull \hbox (0.13626pt too wide) in paragraph at lines 30--31
@@ -1158,13 +1124,13 @@ Overfull \hbox (0.13626pt too wide) in paragraph at lines 30--31
 n-tic re-la-tion-ships be-tween op-er-a-tional queries
  []
 
-[7]) [8]
+[2]) [3]
 Chapter 2.
-(chapters/2_Literature_Survey.tex [9
+(chapters/2_Literature_Survey.tex [4
 
-] [10]) [11]
+] [5]) [6]
 Chapter 3.
-(chapters/3_Requirement.tex [12
+(chapters/3_Requirement.tex [7
 
 ]
 Overfull \hbox (9.7941pt too wide) in paragraph at lines 34--35
@@ -1172,7 +1138,7 @@ Overfull \hbox (9.7941pt too wide) in paragraph at lines 34--35
 ally com-pute its 384-dimensional
  []
 
-[13]
+[8]
 Underfull \hbox (badness 3354) in paragraph at lines 111--111
 []|\T1/cmr/m/n/10.95 Modern PC, Lap-top, or Tablet with
  []
@@ -1182,7 +1148,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 111--111
 []|\T1/cmtt/m/n/10.95 @xenova/transformers \T1/cmr/m/n/10.95 (v2.17.2,
  []
 
-[14] [15]) [16]
+[9] [10]) [11]
 Chapter 4.
 (chapters/4_System_Design.tex
 Overfull \hbox (5.0165pt too wide) in paragraph at lines 8--9
@@ -1190,7 +1156,7 @@ Overfull \hbox (5.0165pt too wide) in paragraph at lines 8--9
 \T1/cmr/m/n/10.95 Im-ple-mented us-ing Node.js
  []
 
-[17
+[12
 
 ]
 Overfull \hbox (3.22418pt too wide) in paragraph at lines 74--75
@@ -1198,14 +1164,14 @@ Overfull \hbox (3.22418pt too wide) in paragraph at lines 74--75
 -als into search-able, high-dimensional
  []
 
-[18] [19]
+[13] [14]
 Underfull \hbox (badness 10000) in paragraph at lines 145--145
 []|\T1/cmr/m/n/10.95 Native out-put di-men-sion of
  []
 
-[20]) [21]
+[15] [16]) [17]
 Chapter 5.
-(chapters/5_Implementation.tex [22
+(chapters/5_Implementation.tex [18
 
 ]
 LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <10.95> not available
@@ -1216,7 +1182,7 @@ Overfull \hbox (5.27281pt too wide) in paragraph at lines 31--32
 -a-tor (\T1/cmtt/m/n/10.95 $meta: "vectorSearchScore"\T1/cmr/m/n/10.95 ). 
  []
 
-[23] [24]) [25]
+[19] [20]) [21]
 Chapter 6.
 (chapters/6_Results.tex
 Overfull \hbox (71.27788pt too wide) in paragraph at lines 4--5
@@ -1225,22 +1191,22 @@ Overfull \hbox (71.27788pt too wide) in paragraph at lines 4--5
 /m/n/10.95 . 
  []
 
-<report_file/upload_dashboard.png, id=550, 1141.866pt x 525.162pt>
+<report_file/upload_dashboard.png, id=586, 1141.866pt x 525.162pt>
 File: report_file/upload_dashboard.png Graphic file (type png)
 <use report_file/upload_dashboard.png>
 Package pdftex.def Info: report_file/upload_dashboard.png  used on input line 3
 7.
 (pdftex.def)             Requested size: 430.31812pt x 197.91289pt.
-[26
+[22
 
 ]
-<report_file/chat_empty.png, id=558, 1138.85475pt x 546.843pt>
+<report_file/chat_empty.png, id=594, 1138.85475pt x 546.843pt>
 File: report_file/chat_empty.png Graphic file (type png)
 <use report_file/chat_empty.png>
 Package pdftex.def Info: report_file/chat_empty.png  used on input line 53.
 (pdftex.def)             Requested size: 430.31812pt x 206.62598pt.
- [27 <./report_file/upload_dashboard.png> <./report_file/chat_empty.png>]
-<report_file/chat_qa_citation.png, id=566, 1153.30875pt x 543.83176pt>
+ [23 <./report_file/upload_dashboard.png> <./report_file/chat_empty.png>]
+<report_file/chat_qa_citation.png, id=602, 1153.30875pt x 543.83176pt>
 File: report_file/chat_qa_citation.png Graphic file (type png)
 <use report_file/chat_qa_citation.png>
 Package pdftex.def Info: report_file/chat_qa_citation.png  used on input line 6
@@ -1321,11 +1287,11 @@ Underfull \hbox (badness 2662) in paragraph at lines 106--106
 []|\T1/cmr/bx/n/10.95 Passed \T1/cmr/m/n/10.95 (Gat-
  []
 
-[28 <./report_file/chat_qa_citation.png>]) [29]
+[24 <./report_file/chat_qa_citation.png>]) [25]
 Chapter 7.
-(chapters/7_Conclusion.tex [30
+(chapters/7_Conclusion.tex [26
 
-] [31]) (report.bbl [32]) [33
+] [27]) (report.bbl [28]) [29
 
 ] (report.aux)
  ***********
@@ -1333,13 +1299,13 @@ LaTeX2e <2025-11-01>
 L3 programming layer <2025-12-24>
  ***********
 Package rerunfilecheck Info: File `report.out' has not changed.
-(rerunfilecheck)             Checksum: 8B8509F9BFA7D771FFDD58B709745969;12130.
+(rerunfilecheck)             Checksum: 12AF267DAC0A03ED1AEA08FCED23D5A1;12870.
  ) 
 Here is how much of TeX's memory you used:
- 35988 strings out of 467871
- 847639 string characters out of 5418377
- 1357045 words of memory out of 5000000
- 64072 multiletter control sequences out of 15000+600000
+ 35996 strings out of 467871
+ 847665 string characters out of 5418377
+ 1357035 words of memory out of 5000000
+ 64075 multiletter control sequences out of 15000+600000
  653721 words of font info for 90 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  84i,14n,94p,1111b,1031s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -1377,9 +1343,9 @@ blic/amsfonts/cm/cmr8.pfb><C:/Users/krish/AppData/Local/Programs/MiKTeX/fonts/t
 ype1/public/amsfonts/cm/cmsy10.pfb><C:/Users/krish/AppData/Local/Programs/MiKTe
 X/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/krish/AppData/Local/Progra
 ms/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on report.pdf (40 pages, 1265880 bytes).
+Output written on report.pdf (41 pages, 1266421 bytes).
 PDF statistics:
- 1520 PDF objects out of 1728 (max. 8388607)
- 178 named destinations out of 1000 (max. 500000)
- 496 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1556 PDF objects out of 1728 (max. 8388607)
+ 183 named destinations out of 1000 (max. 500000)
+ 552 words of extra memory for PDF output out of 10000 (max. 10000000)
 

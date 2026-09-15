@@ -145,38 +145,39 @@ To enable high-performance cosine similarity searches on the \texttt{embedding} 
 }
 \end{table}
 
-\section{Chunking and Domain Section Classification Algorithm}
+\section{Text Segmentation and Domain Classification}
 \label{sec:design_algorithms}
 
-The text segmentation and domain classification procedure operates in structured mathematical steps without modifying original text semantics.
+The text segmentation and domain classification procedure is used to divide the extracted SOP content into smaller, manageable sections and assign each section an appropriate operational domain. The procedure is designed to organize the document content while preserving the original meaning and semantics of the extracted text.
 
-\subsection{Sliding-Window Segmentation Procedure}
-Given an extracted page text string $T$ of character length $|T|$, a window size $W = 1000$, and a step overlap $S = 100$:
+\subsection{Sliding-Window Segmentation}
 
-\begin{enumerate}
-    \item Initialize pointer $p \leftarrow 0$ and sequence index $i \leftarrow 0$.
-    \item While $p < |T|$:
-    \begin{enumerate}
-        \item Define end boundary $e \leftarrow \min(p + W, |T|)$.
-        \item Extract substring $C_i \leftarrow T[p : e]$.
-        \item Determine operational section $H_i \leftarrow \text{ClassifySection}(C_i)$.
-        \item Emit chunk record with payload $(i, C_i, |C_i|, \text{PageNumber}, H_i)$.
-        \item Advance index $i \leftarrow i + 1$.
-        \item Advance pointer $p \leftarrow p + (W - S)$.
-    \end{enumerate}
-\end{enumerate}
+The extracted text from each PDF page is processed using a sliding-window approach. A fixed window size of 1000 characters is used, with an overlap of 100 characters between consecutive chunks.
 
-\subsection{Domain Section Classification Procedure}
-The section classification routine $\text{ClassifySection}(C)$ scans the chunk text against an ordered domain pattern set $\mathcal{P}$:
+The segmentation process begins at the start of the extracted text. A portion of up to 1000 characters is selected and treated as an individual chunk. Each chunk is then associated with its corresponding page number and classified according to its operational section. After processing a chunk, the starting position is moved forward by 900 characters, resulting in a 100-character overlap with the previous chunk.
 
-\begin{equation}
-\begin{aligned}
-\mathcal{P} = \{ & \text{``Document Control''}, \text{``Executive Summary''}, \text{``Inbound Operations''}, \\
-& \text{``Inventory Audit Framework''}, \text{``Outbound Operations''}, \dots, \text{``Extreme Weather''}\}
-\end{aligned}
-\end{equation}
+This overlapping strategy helps maintain contextual continuity between consecutive chunks, particularly when an important statement or procedure spans the boundary between two chunks. Each generated chunk contains its sequence number, text content, character count, page information, and identified operational section.
 
-For each pattern $P_j \in \mathcal{P}$, if $P_j \subseteq C$, the algorithm immediately returns $P_j$. If no patterns in $\mathcal{P}$ are detected, it assigns the default label \emph{``Unknown Section''}.
+\subsection{Domain Section Classification}
+
+After segmentation, each generated text chunk is analyzed to determine its relevant operational section. The classification procedure compares the content of the chunk with a predefined collection of domain-specific section patterns.
+
+The pattern set includes sections such as:
+\begin{itemize}
+    \item Document Control
+    \item Executive Summary
+    \item Inbound Operations
+    \item Inventory Audit Framework
+    \item Outbound Operations
+    \item Extreme Weather
+    \item Other predefined operational sections contained within the SOP knowledge base.
+\end{itemize}
+
+The patterns are checked in a predefined order. When a matching section name is found within the chunk, that section is assigned as the classification label for the chunk. The classification process stops after the first matching pattern is identified.
+
+If none of the predefined section patterns are detected in the chunk, the system assigns the default classification ``Unknown Section''.
+
+This process allows the system to organize extracted SOP content according to operational domains, making the resulting chunks more meaningful for subsequent retrieval and question-answering operations.
 
 \section{Context Grounding and Prompt Engineering}
 \label{sec:design_prompts}
