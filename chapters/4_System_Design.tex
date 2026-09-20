@@ -65,6 +65,77 @@ Figure \ref{fig:arch_diagram} illustrates the comprehensive architectural topolo
 \label{fig:arch_diagram}
 \end{figure}
 
+\section{Data Ingestion Flowchart}
+\label{sec:design_data_ingestion_flowchart}
+
+The data ingestion pipeline processes uploaded Standard Operating Procedure (SOP) manuals into high-dimensional vector representations stored within the database. Figure \ref{fig:data_ingestion_flowchart} illustrates the sequential control flow of the document ingestion and embedding generation process.
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+    scale=0.92,
+    every node/.style={transform shape},
+    startstop/.style={
+        rectangle, rounded corners=8pt, minimum width=3.4cm, minimum height=0.9cm,
+        draw=black, very thick, fill=gray!8, align=center, font=\normalsize\bfseries
+    },
+    decision/.style={
+        diamond, aspect=2.0, minimum width=3.4cm, minimum height=1.1cm,
+        draw=black, very thick, fill=gray!8, align=center, font=\normalsize\bfseries
+    },
+    process/.style={
+        rectangle, minimum width=4.4cm, minimum height=1.1cm,
+        draw=black, very thick, fill=gray!8, align=center, font=\normalsize
+    },
+    arrow/.style={
+        draw=black, -{Latex[length=3mm, width=2mm]}, very thick
+    },
+    label_font/.style={
+        font=\small\bfseries, text=black
+    }
+]
+
+    % Nodes
+    \node [startstop] (start) at (0, 0) {Start Upload};
+    
+    \node [decision] (check) at (0, -1.8) {Valid PDF?};
+    
+    \node [process] (reject) at (5.0, -1.8) {\textbf{Reject File \&}\\[2pt]\textbf{Return Error}};
+    
+    \node [process] (extract) at (0, -3.8) {\textbf{Extract Text}\\[2pt]{\small (\texttt{pdfjs-dist})}};
+    
+    \node [process] (chunk) at (0, -5.8) {\textbf{Chunk Text}\\[2pt]{\small (1000 characters,}\\[1pt]{\small 100 character overlap)}};
+    
+    \node [process] (embed) at (0, -7.8) {\textbf{Generate 384-D Embeddings}\\[2pt]{\small (\texttt{all-MiniLM-L6-v2})}};
+    
+    \node [process] (store) at (0, -9.9) {\textbf{Store Chunks + Embeddings +}\\[2pt]\textbf{Metadata}\\[2pt]{\small (MongoDB Atlas)}};
+    
+    \node [startstop] (finish) at (0, -12.0) {Ingestion Complete};
+
+    % Arrows
+    \draw [arrow] (start) -- (check);
+    \draw [arrow] (check) -- node[above=2pt, label_font] {No} (reject);
+    \draw [arrow] (check) -- node[right=3pt, label_font] {Yes} (extract);
+    \draw [arrow] (extract) -- (chunk);
+    \draw [arrow] (chunk) -- (embed);
+    \draw [arrow] (embed) -- (store);
+    \draw [arrow] (store) -- (finish);
+
+\end{tikzpicture}
+\caption{Data Ingestion Flowchart of OpsMind AI}
+\label{fig:data_ingestion_flowchart}
+\end{figure}
+
+As shown in the flowchart, the ingestion process proceeds through the following stages:
+\begin{enumerate}
+    \item \textbf{Upload Initiation:} The client submits an enterprise SOP document via the file upload interface.
+    \item \textbf{Format Validation:} The server verifies whether the uploaded file is a valid PDF. If the validation fails, the file is rejected and an appropriate error response is returned to the user.
+    \item \textbf{Text Extraction:} Upon successful validation, textual content is parsed and extracted sequentially from each page using \texttt{pdfjs-dist}.
+    \item \textbf{Text Chunking:} The extracted text is segmented using a sliding-window chunking strategy with a fixed size of 1,000 characters and a 100-character overlap to preserve semantic continuity across segment boundaries.
+    \item \textbf{Dense Embedding Generation:} Each text chunk is transformed into a normalized 384-dimensional vector embedding using the local \texttt{all-MiniLM-L6-v2} Transformer model.
+    \item \textbf{Database Storage and Indexing:} The text chunks, embeddings, and associated document metadata are stored in MongoDB Atlas, where they are indexed for approximate nearest-neighbor vector search.
+    \item \textbf{Completion:} Once all chunks and embeddings are persisted, the ingestion process terminates successfully.
+\end{enumerate}
 
 \section{UML Component Diagram}
 \label{sec:design_component_diagram}
