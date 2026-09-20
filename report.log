@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.9.8)  20 SEP 2026 20:15
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.9.8)  20 SEP 2026 20:19
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1036,7 +1036,7 @@ Package hyperref Info: Link coloring ON on input line 33.
 <report_file/iiit manipur.png, id=254, 256.96pt x 197.73875pt>
 File: report_file/iiit manipur.png Graphic file (type png)
 <use report_file/iiit manipur.png>
-Package pdftex.def Info: report_file/iiit manipur.png  used on input line 67.
+Package pdftex.def Info: report_file/iiit manipur.png  used on input line 68.
 (pdftex.def)             Requested size: 128.0374pt x 98.52818pt.
  [1
 
@@ -1044,15 +1044,15 @@ Package pdftex.def Info: report_file/iiit manipur.png  used on input line 67.
 e/iiit manipur.png>] [1]
 File: report_file/iiit manipur.png Graphic file (type png)
 <use report_file/iiit manipur.png>
-Package pdftex.def Info: report_file/iiit manipur.png  used on input line 107.
+Package pdftex.def Info: report_file/iiit manipur.png  used on input line 108.
 (pdftex.def)             Requested size: 42.67912pt x 32.84273pt.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 108
+LaTeX Font Info:    Trying to load font information for U+msa on input line 109
 .
 
 (C:\Users\krish\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 108
+LaTeX Font Info:    Trying to load font information for U+msb on input line 109
 .
 
 (C:\Users\krish\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
@@ -1064,7 +1064,7 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 File: report_file/internship_offer_letter_page1.jpg Graphic file (type jpg)
 <use report_file/internship_offer_letter_page1.jpg>
 Package pdftex.def Info: report_file/internship_offer_letter_page1.jpg  used on
- input line 154.
+ input line 155.
 (pdftex.def)             Requested size: 385.78784pt x 546.39938pt.
  [3 <./report_file/internship_offer_letter_page1.jpg>]
 <report_file/internship_offer_letter_page2.jpg, id=285, 725.71124pt x 1027.84pt
@@ -1072,7 +1072,7 @@ Package pdftex.def Info: report_file/internship_offer_letter_page1.jpg  used on
 File: report_file/internship_offer_letter_page2.jpg Graphic file (type jpg)
 <use report_file/internship_offer_letter_page2.jpg>
 Package pdftex.def Info: report_file/internship_offer_letter_page2.jpg  used on
- input line 165.
+ input line 166.
 (pdftex.def)             Requested size: 385.78784pt x 546.39938pt.
  [4 <./report_file/internship_offer_letter_page2.jpg>]
 <report_file/internship_completion_certificate.jpg, id=290, 726.715pt x 1027.84
@@ -1081,7 +1081,7 @@ File: report_file/internship_completion_certificate.jpg Graphic file (type jpg)
 
 <use report_file/internship_completion_certificate.jpg>
 Package pdftex.def Info: report_file/internship_completion_certificate.jpg  use
-d on input line 176.
+d on input line 177.
 (pdftex.def)             Requested size: 386.32143pt x 546.39938pt.
  [5 <./report_file/internship_completion_certificate.jpg>] [6] [7] (report.toc 
 [8
@@ -1333,9 +1333,9 @@ pe1/public/amsfonts/cm/cmr8.pfb><C:/Users/krish/AppData/Local/Programs/MiKTeX/f
 onts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/krish/AppData/Local/Programs
 /MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/krish/AppData/Local/
 Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on report.pdf (42 pages, 1289061 bytes).
+Output written on report.pdf (42 pages, 1288777 bytes).
 PDF statistics:
- 1623 PDF objects out of 1728 (max. 8388607)
+ 1622 PDF objects out of 1728 (max. 8388607)
  176 named destinations out of 1000 (max. 500000)
  544 words of extra memory for PDF output out of 10000 (max. 10000000)
 
