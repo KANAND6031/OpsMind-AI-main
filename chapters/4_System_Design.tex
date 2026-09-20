@@ -65,34 +65,6 @@ Figure \ref{fig:arch_diagram} illustrates the comprehensive architectural topolo
 \label{fig:arch_diagram}
 \end{figure}
 
-\section{Data Flow and RAG Pipeline Architecture}
-\label{sec:design_rag_pipeline}
-
-The operational lifecycle of OpsMind AI is bifurcated into two coordinated execution pipelines: the \emph{Ingestion and Indexing Pipeline} and the \emph{Query and Retrieval Pipeline}.
-
-\subsection{Document Ingestion and Indexing Pipeline}
-The ingestion pipeline processes newly uploaded PDF manuals into searchable, high-dimensional vector representations through the following structured sequence of steps:
-
-\begin{enumerate}
-    \item \textbf{Step 1 (Upload Handling):} The client sends a multi-part form request containing the PDF binary. Multer intercepts the request, validates the MIME type, assigns a collision-resistant timestamped filename, and writes the file to the server storage directory.
-    \item \textbf{Step 2 (Text Stream Extraction):} The PDF parsing engine (\texttt{pdfjs-dist}) reads the binary buffer, parses document cross-reference tables, iterates through each page sequentially, and extracts textual tokens into structured page arrays.
-    \item \textbf{Step 3 (Sliding-Window Segmentation):} The extracted text for each page is divided into fixed-size chunks of 1,000 characters with a 100-character overlapping sliding window to ensure semantic continuity across split boundaries.
-    \item \textbf{Step 4 (Section Header Detection):} Each chunk is evaluated against an operational domain dictionary to identify relevant operational topics and classify the segment under specific section headers.
-    \item \textbf{Step 5 (Feature Extraction and Normalization):} The in-process ONNX neural pipeline transforms each text segment into a normalized 384-dimensional vector embedding.
-    \item \textbf{Step 6 (Atomic Indexing):} Pre-existing chunks belonging to the same filename are purged to prevent duplicate records, and the newly generated chunk documents containing embeddings, metadata, and text are bulk-inserted into MongoDB Atlas.
-\end{enumerate}
-
-\subsection{Query and Retrieval Pipeline}
-When an enterprise user submits an inquiry, the retrieval and answer generation pipeline executes as follows:
-
-\begin{enumerate}
-    \item \textbf{Step 1 (Query Vectorization):} The incoming natural language query string is passed to the embedding extractor, generating a normalized query vector $\mathbf{q} \in \mathbb{R}^{384}$.
-    \item \textbf{Step 2 (Approximate Nearest Neighbor Search):} A MongoDB vector search aggregation pipeline evaluates the query vector $\mathbf{q}$ against the indexed corpus using cosine similarity, sampling 100 candidate vectors and returning the top 5 closest chunks.
-    \item \textbf{Step 3 (Relevance Filtering):} The similarity score of the top-ranked chunk is checked against the threshold $\tau = 0.65$. If the score is below $\tau$, the pipeline terminates early and returns the standard refusal string.
-    \item \textbf{Step 4 (Context Assembly):} If relevant chunks are found, the text contents of the top-$k$ chunks are concatenated into a formatted context block.
-    \item \textbf{Step 5 (Generative Inference):} A strict anti-hallucination prompt containing the context and query is dispatched to the Gemini 2.5 Flash model.
-    \item \textbf{Step 6 (Response and Citation Dispatch):} The synthesized answer, along with granular metadata for each supporting chunk (filename, page, section, chunk index, similarity score), is returned to the user interface.
-\end{enumerate}
 
 \section{UML Component Diagram}
 \label{sec:design_component_diagram}

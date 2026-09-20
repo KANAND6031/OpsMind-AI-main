@@ -3,12 +3,12 @@
 \addvspace {10\p@ }
 \contentsline {table}{\numberline {3.1}{\ignorespaces System Hardware and Software Specifications}}{10}{table.caption.11}%
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {4.1}{\ignorespaces Database Field Definitions for the Chunk Entity}}{15}{table.caption.15}%
-\contentsline {table}{\numberline {4.2}{\ignorespaces Vector Search Index Configuration}}{16}{table.caption.16}%
-\contentsline {table}{\numberline {4.3}{\ignorespaces OpsMind AI RESTful API Endpoint Specifications}}{18}{table.caption.17}%
+\contentsline {table}{\numberline {4.1}{\ignorespaces Database Field Definitions for the Chunk Entity}}{14}{table.caption.15}%
+\contentsline {table}{\numberline {4.2}{\ignorespaces Vector Search Index Configuration}}{15}{table.caption.16}%
+\contentsline {table}{\numberline {4.3}{\ignorespaces OpsMind AI RESTful API Endpoint Specifications}}{16}{table.caption.17}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {6.1}{\ignorespaces Structural Metrics of the Evaluation SOP Corpus}}{23}{table.caption.18}%
-\contentsline {table}{\numberline {6.2}{\ignorespaces Benchmark Query Execution and Evaluation Matrix}}{26}{table.caption.22}%
-\contentsline {table}{\numberline {6.3}{\ignorespaces End-to-End Latency Profile of the OpsMind AI Pipeline}}{26}{table.caption.23}%
+\contentsline {table}{\numberline {6.1}{\ignorespaces Structural Metrics of the Evaluation SOP Corpus}}{21}{table.caption.18}%
+\contentsline {table}{\numberline {6.2}{\ignorespaces Benchmark Query Execution and Evaluation Matrix}}{24}{table.caption.22}%
+\contentsline {table}{\numberline {6.3}{\ignorespaces End-to-End Latency Profile of the OpsMind AI Pipeline}}{24}{table.caption.23}%
 \addvspace {10\p@ }
