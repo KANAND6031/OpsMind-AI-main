@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.9.8)  20 SEP 2026 20:19
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.9.8)  20 SEP 2026 20:21
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -928,7 +928,7 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 )
 \Hy@SectionHShift=\skip61
 )
-Package hyperref Info: Option `colorlinks' set `true' on input line 31.
+Package hyperref Info: Option `colorlinks' set `true' on input line 32.
 
 (C:\Users\krish\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdf
 tex.def
@@ -937,24 +937,24 @@ File: l3backend-pdftex.def 2025-10-09 L3 backend support: PDF output (pdfTeX)
 ) (report.aux)
 \openout1 = `report.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 33.
-LaTeX Font Info:    ... okay on input line 33.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 33.
-LaTeX Font Info:    ... okay on input line 33.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 33.
-LaTeX Font Info:    ... okay on input line 33.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 33.
-LaTeX Font Info:    ... okay on input line 33.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 33.
-LaTeX Font Info:    ... okay on input line 33.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 33.
-LaTeX Font Info:    ... okay on input line 33.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 33.
-LaTeX Font Info:    ... okay on input line 33.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 33.
-LaTeX Font Info:    ... okay on input line 33.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 33.
-LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -1028,7 +1028,7 @@ Package caption Info: End \AtBeginDocument code.
 Package pgfplots notification 'compat/show suggested version=true': document ha
 s been generated with the most recent feature set (\pgfplotsset{compat=1.18}).
 
-Package hyperref Info: Link coloring ON on input line 33.
+Package hyperref Info: Link coloring ON on input line 34.
 (report.out) (report.out)
 \@outlinefile=\write4
 \openout4 = `report.out'.
@@ -1036,7 +1036,7 @@ Package hyperref Info: Link coloring ON on input line 33.
 <report_file/iiit manipur.png, id=254, 256.96pt x 197.73875pt>
 File: report_file/iiit manipur.png Graphic file (type png)
 <use report_file/iiit manipur.png>
-Package pdftex.def Info: report_file/iiit manipur.png  used on input line 68.
+Package pdftex.def Info: report_file/iiit manipur.png  used on input line 69.
 (pdftex.def)             Requested size: 128.0374pt x 98.52818pt.
  [1
 
@@ -1044,15 +1044,15 @@ Package pdftex.def Info: report_file/iiit manipur.png  used on input line 68.
 e/iiit manipur.png>] [1]
 File: report_file/iiit manipur.png Graphic file (type png)
 <use report_file/iiit manipur.png>
-Package pdftex.def Info: report_file/iiit manipur.png  used on input line 108.
+Package pdftex.def Info: report_file/iiit manipur.png  used on input line 109.
 (pdftex.def)             Requested size: 42.67912pt x 32.84273pt.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 109
+LaTeX Font Info:    Trying to load font information for U+msa on input line 110
 .
 
 (C:\Users\krish\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 109
+LaTeX Font Info:    Trying to load font information for U+msb on input line 110
 .
 
 (C:\Users\krish\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
@@ -1064,7 +1064,7 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 File: report_file/internship_offer_letter_page1.jpg Graphic file (type jpg)
 <use report_file/internship_offer_letter_page1.jpg>
 Package pdftex.def Info: report_file/internship_offer_letter_page1.jpg  used on
- input line 155.
+ input line 156.
 (pdftex.def)             Requested size: 385.78784pt x 546.39938pt.
  [3 <./report_file/internship_offer_letter_page1.jpg>]
 <report_file/internship_offer_letter_page2.jpg, id=285, 725.71124pt x 1027.84pt
@@ -1072,7 +1072,7 @@ Package pdftex.def Info: report_file/internship_offer_letter_page1.jpg  used on
 File: report_file/internship_offer_letter_page2.jpg Graphic file (type jpg)
 <use report_file/internship_offer_letter_page2.jpg>
 Package pdftex.def Info: report_file/internship_offer_letter_page2.jpg  used on
- input line 166.
+ input line 167.
 (pdftex.def)             Requested size: 385.78784pt x 546.39938pt.
  [4 <./report_file/internship_offer_letter_page2.jpg>]
 <report_file/internship_completion_certificate.jpg, id=290, 726.715pt x 1027.84
@@ -1081,7 +1081,7 @@ File: report_file/internship_completion_certificate.jpg Graphic file (type jpg)
 
 <use report_file/internship_completion_certificate.jpg>
 Package pdftex.def Info: report_file/internship_completion_certificate.jpg  use
-d on input line 177.
+d on input line 178.
 (pdftex.def)             Requested size: 386.32143pt x 546.39938pt.
  [5 <./report_file/internship_completion_certificate.jpg>] [6] [7] (report.toc 
 [8
@@ -1291,10 +1291,10 @@ Package rerunfilecheck Info: File `report.out' has not changed.
 (rerunfilecheck)             Checksum: DC65A479CC5410EA25C8EFB339AACDD9;12361.
  ) 
 Here is how much of TeX's memory you used:
- 36095 strings out of 467871
- 849654 string characters out of 5418377
- 1357344 words of memory out of 5000000
- 64177 multiletter control sequences out of 15000+600000
+ 36091 strings out of 467871
+ 849577 string characters out of 5418377
+ 1357320 words of memory out of 5000000
+ 64173 multiletter control sequences out of 15000+600000
  655073 words of font info for 95 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  84i,14n,94p,1115b,1033s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -1333,7 +1333,7 @@ pe1/public/amsfonts/cm/cmr8.pfb><C:/Users/krish/AppData/Local/Programs/MiKTeX/f
 onts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/krish/AppData/Local/Programs
 /MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/krish/AppData/Local/
 Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on report.pdf (42 pages, 1288777 bytes).
+Output written on report.pdf (42 pages, 1288479 bytes).
 PDF statistics:
  1622 PDF objects out of 1728 (max. 8388607)
  176 named destinations out of 1000 (max. 500000)
