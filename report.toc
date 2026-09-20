@@ -37,7 +37,7 @@
 \contentsline {section}{\numberline {4.5}Text Segmentation and Domain Classification}{16}{section.4.5}%
 \contentsline {subsection}{\numberline {4.5.1}Sliding-Window Segmentation}{17}{subsection.4.5.1}%
 \contentsline {subsection}{\numberline {4.5.2}Domain Section Classification}{17}{subsection.4.5.2}%
-\contentsline {section}{\numberline {4.6}API Endpoint Structure}{18}{section.4.6}%
+\contentsline {section}{\numberline {4.6}API Endpoint Structure}{17}{section.4.6}%
 \contentsline {chapter}{\numberline {5}Implementation}{19}{chapter.5}%
 \contentsline {section}{\numberline {5.1}Document Processing Pipeline Implementation}{19}{section.5.1}%
 \contentsline {subsection}{\numberline {5.1.1}PDF Text Stream Ingestion}{19}{subsection.5.1.1}%

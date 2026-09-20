@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.9.8)  20 SEP 2026 19:51
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.9.8)  20 SEP 2026 20:02
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1163,7 +1163,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 284--284
 []|\T1/cmr/m/n/10.95 Native out-put di-men-sion of
  []
 
-[16] [17]) [18]
+[16]) [17] [18]
 Chapter 5.
 (chapters/5_Implementation.tex [19
 
@@ -1339,7 +1339,7 @@ nts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/krish/AppData/Local/Programs/Mi
 KTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/krish/AppData/Local/Pr
 ograms/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/krish/AppData/
 Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on report.pdf (42 pages, 1290751 bytes).
+Output written on report.pdf (42 pages, 1290704 bytes).
 PDF statistics:
  1627 PDF objects out of 1728 (max. 8388607)
  176 named destinations out of 1000 (max. 500000)

@@ -301,16 +301,7 @@ This overlapping strategy helps maintain contextual continuity between consecuti
 
 After segmentation, each generated text chunk is analyzed to determine its relevant operational section. The classification procedure compares the content of the chunk with a predefined collection of domain-specific section patterns.
 
-The pattern set includes sections such as:
-\begin{itemize}
-    \item Document Control
-    \item Executive Summary
-    \item Inbound Operations
-    \item Inventory Audit Framework
-    \item Outbound Operations
-    \item Extreme Weather
-    \item Other predefined operational sections contained within the SOP knowledge base.
-\end{itemize}
+The pattern set includes sections such as Document Control, Executive Summary, Inbound Operations, Inventory Audit Framework, Outbound Operations, Extreme Weather, and other predefined operational sections contained within the SOP knowledge base.
 
 The patterns are checked in a predefined order. When a matching section name is found within the chunk, that section is assigned as the classification label for the chunk. The classification process stops after the first matching pattern is identified.
 
