@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.9.8)  21 SEP 2026 00:20
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.9.8)  21 SEP 2026 00:24
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1266,9 +1266,7 @@ Package hyperref Info: Link coloring ON on input line 35.
 LaTeX Font Info:    Font shape `T1/fnc/m/n' will be
 (Font)              scaled to size 16.07027pt on input line 42.
 LaTeX Font Info:    Font shape `T1/fnc/m/n' will be
-(Font)              scaled to size 13.39188pt on input line 47.
-LaTeX Font Info:    Font shape `T1/fnc/m/n' will be
-(Font)              scaled to size 11.15991pt on input line 51.
+(Font)              scaled to size 11.15991pt on input line 47.
 LaTeX Font Info:    Font shape `T1/fnc/m/sc' will be
 (Font)              scaled to size 10.18341pt on input line 55.
 LaTeX Font Info:    Font shape `T1/fnc/b/sc' will be
@@ -1393,6 +1391,8 @@ LaTeX Font Info:    Font shape `T1/fnc/m/n' will be
 LaTeX Font Info:    Font shape `T1/fnc/b/n' will be
 (Font)              scaled to size 19.28804pt on input line 237.
 (chapters/1_Introduction.tex
+LaTeX Font Info:    Font shape `T1/fnc/m/n' will be
+(Font)              scaled to size 13.39188pt on input line 1.
 LaTeX Font Info:    Font shape `T1/fnc/b/n' will be
 (Font)              scaled to size 13.39188pt on input line 1.
 
@@ -1616,11 +1616,11 @@ Package rerunfilecheck Info: File `report.out' has not changed.
 (rerunfilecheck)             Checksum: DC65A479CC5410EA25C8EFB339AACDD9;12361.
  ) 
 Here is how much of TeX's memory you used:
- 36590 strings out of 467871
- 857875 string characters out of 5418377
+ 36589 strings out of 467871
+ 857869 string characters out of 5418377
  1359186 words of memory out of 5000000
  64623 multiletter control sequences out of 15000+600000
- 717762 words of font info for 151 fonts, out of 8000000 for 9000
+ 716830 words of font info for 150 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  84i,14n,94p,1115b,1033s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\krish\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt
@@ -1635,7 +1635,7 @@ AppData/Local/Programs/MiKTeX/fonts/type1/urw/ncntrsbk/uncb8a.pfb><C:/Users/kri
 sh/AppData/Local/Programs/MiKTeX/fonts/type1/urw/ncntrsbk/uncbi8a.pfb><C:/Users
 /krish/AppData/Local/Programs/MiKTeX/fonts/type1/urw/ncntrsbk/uncr8a.pfb><C:/Us
 ers/krish/AppData/Local/Programs/MiKTeX/fonts/type1/urw/ncntrsbk/uncri8a.pfb>
-Output written on report.pdf (42 pages, 1013032 bytes).
+Output written on report.pdf (42 pages, 1013011 bytes).
 PDF statistics:
  788 PDF objects out of 1000 (max. 8388607)
  176 named destinations out of 1000 (max. 500000)
