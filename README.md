@@ -1,6 +1,6 @@
-# 🚀 OpsMind AI – Enterprise SOP Knowledge Assistant
+# 🚀 OpsMind AI – Context-Aware Corporate Knowledge Brain
 
-OpsMind AI is an AI-powered Enterprise Knowledge Management System that enables employees to interact with Standard Operating Procedures (SOPs) using natural language.
+OpsMind AI is an AI-powered Enterprise Knowledge Management System that enables employees to interact with corporate documentation and Standard Operating Procedures (SOPs) using natural language.
 
 The system uses **Retrieval-Augmented Generation (RAG)** to retrieve relevant information from uploaded SOP documents and generate contextually grounded, factually verifiable responses using Google Gemini 2.5 Flash and local dense Transformer embeddings.
 

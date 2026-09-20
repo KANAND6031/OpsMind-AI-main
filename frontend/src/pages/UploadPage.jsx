@@ -74,7 +74,7 @@ border-gray-200
     mt-3
     text-lg
     ">
-        Enterprise SOP Knowledge Assistant
+        Context-Aware Corporate Knowledge Brain
     </p>
 
     <div className="
